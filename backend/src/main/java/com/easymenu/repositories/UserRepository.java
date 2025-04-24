@@ -7,4 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserModel, UUID> {}
+public interface UserRepository extends JpaRepository<UserModel, UUID> {
+    boolean existsByEmail(String email);
+    boolean existsByName(String username);
+}
