@@ -1,15 +1,22 @@
 package com.easymenu.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.UUID;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "TB_USER")
-public class UserModel extends RepresentationModel<UserModel> implements Serializable {
+public class UserModel implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -20,35 +27,18 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
     private String email;
     private String password;
 
-    public UUID getId() {
-        return id;
-    }
+    @CreationTimestamp
+    private Instant createdOn;
+    @UpdateTimestamp
+    private Instant updatedOn;
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
-    public String getName() {
-        return name;
-    }
+    public UserModel() {}
 
-    public void setName(String name) {
+    public UserModel( String name, String email, String password) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
+
 }

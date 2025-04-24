@@ -1,17 +1,17 @@
 package com.easymenu.controllers;
 
 import com.easymenu.dtos.UserRecordDto;
-import com.easymenu.models.UserModel;
-import com.easymenu.repositories.UserRepository;
+import com.easymenu.dtos.UserResponseDto;
+import com.easymenu.dtos.UserUpdateDto;
+import com.easymenu.services.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -21,56 +21,48 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @PostMapping("/users")
-    public ResponseEntity<UserModel> addUser(@RequestBody @Valid UserRecordDto userRecordDto) {
-        UserModel userModel = new UserModel();
-        BeanUtils.copyProperties(userRecordDto, userModel);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userRepository.save(userModel));
+    public ResponseEntity<Object> addUser(@RequestBody @Valid UserRecordDto user) {
+        UserResponseDto newUser = userService.createUser(user);
+        newUser.add(linkTo(methodOn(UserController.class).getOneUser(newUser.getId())).withSelfRel());
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserModel>> getAllUsers() {
-        List<UserModel> usersList = userRepository.findAll();
-        if (!usersList.isEmpty()) {
-            for (UserModel user : usersList) {
-                UUID id = user.getId();
-                user.add(linkTo(methodOn(UserController.class).getOneUser(id)).withSelfRel());
-            }
+    public ResponseEntity<List<UserResponseDto>> getAllUsers() {
+        List<UserResponseDto> usersList = userService.getUsers();
+        if (usersList.isEmpty()) {
+            return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.status(HttpStatus.OK).body(usersList);
+
+        usersList.forEach(user ->
+                user.add(linkTo(methodOn(UserController.class)
+                        .getOneUser(user.getId())).withSelfRel()));
+
+        return ResponseEntity.ok(usersList);
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<Object> getOneUser(@PathVariable(value="id") UUID id) {
-        Optional<UserModel> user = userRepository.findById(id);
-        if (user.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found!");
-        }
-        user.get().add(linkTo(methodOn(UserController.class).getOneUser(id)).withSelfRel());
-        return ResponseEntity.status(HttpStatus.OK).body(user.get());
+    public ResponseEntity<UserResponseDto> getOneUser(@PathVariable(value="id") UUID id) {
+        UserResponseDto user = userService.getOneUser(id);
+        user.add(linkTo(methodOn(UserController.class).getOneUser(id)).withSelfRel());
+        return ResponseEntity.ok(user);
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<Object> updateUser(@RequestBody @Valid UserRecordDto userRecordDto, @PathVariable(value="id") UUID id) {
-        Optional<UserModel> user = userRepository.findById(id);
-        if (user.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found!");
-        }
-        var userModelUpdated = user.get();
-        BeanUtils.copyProperties(userRecordDto, userModelUpdated);
-        return ResponseEntity.status(HttpStatus.OK).body(userRepository.save(userModelUpdated));
+    public ResponseEntity<UserResponseDto> updateUser(@RequestBody @Valid UserUpdateDto userUpdatedDto, @PathVariable(value="id") UUID id) {
+        UserResponseDto updatedUser = userService.updateUser(userUpdatedDto, id);
+        return ResponseEntity.ok(updatedUser);
     }
+
+
 
     @DeleteMapping("/users/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
-        Optional<UserModel> user = userRepository.findById(id);
-        if (user.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found!");
-        }
-        userRepository.deleteById(id);
-        return ResponseEntity.status(HttpStatus.OK).body("User deleted!");
+        userService.deleteUser(id);
+        return ResponseEntity.ok("User deleted successfully");
     }
 
 }
