@@ -3,12 +3,14 @@ package com.easymenu.services;
 import com.easymenu.dtos.UserRecordDto;
 import com.easymenu.dtos.UserResponseDto;
 import com.easymenu.dtos.UserUpdateDto;
+import com.easymenu.enums.UserStatus;
 import com.easymenu.exceptions.UserException;
 import com.easymenu.factories.UserFactory;
 import com.easymenu.models.UserModel;
 import com.easymenu.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private final UserFactory userFactory;
     private final UserRepository userRepository;
 
+    @Autowired
     public UserServiceImpl(UserFactory userFactory, UserRepository userRepository) {
         this.userFactory = userFactory;
         this.userRepository = userRepository;
@@ -36,13 +39,13 @@ public class UserServiceImpl implements UserService {
             throw new UserException.UsernameAlreadyExistsException("Username already exists");
         }
 
-        UserModel savedUser = userFactory.createUser(userRecordDto);
+        UserModel newUser = userFactory.createUser(userRecordDto);
 
-        userRepository.save(savedUser);
+        userRepository.save(newUser);
 
-        log.info("User created successfully: {}", savedUser.getEmail());
+        log.info("User created successfully: {}", newUser.getEmail());
 
-        return userFactory.toResponseDto(savedUser);
+        return userFactory.toResponseDto(newUser);
     }
 
     @Override
@@ -77,18 +80,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(UUID id) {
+    public void inactiveUser(UUID id) {
 
-        if (id == null) {
+        if (!userRepository.existsById(id)) {
             throw new UserException.UserNotFoundException("Please provide a valid id");
         }
 
         UserModel user = userRepository.findById(id)
-                .orElseThrow(() -> new UserException.UserNotFoundException("User not found: " + id));
+                .orElseThrow(() ->  new UserException.UserNotFoundException("User wasn't found to change status"));
 
-        userRepository.deleteById(id);
-
-        log.info("User deleted successfully: {}", user.getEmail());
+        user.setStatus(UserStatus.INACTIVE);
+        userRepository.save(user);
+        log.info("User deleted successfully");
 
     }
 
@@ -106,6 +109,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserResponseDto> getUsers() {
         return userRepository.findAll().stream()
+                .map(userFactory::toResponseDto).toList();
+    }
+
+    @Override
+    public List<UserResponseDto> getUsersByStatus(UserStatus status) {
+        return userRepository.findAllByStatus(status).stream()
                 .map(userFactory::toResponseDto).toList();
     }
 }

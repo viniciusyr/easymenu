@@ -7,7 +7,6 @@ import com.easymenu.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,12 +56,10 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-
-
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable(value="id") UUID id) {
-        userService.deleteUser(id);
-        return ResponseEntity.ok("User deleted successfully");
+    @PutMapping("/users/{id}/status")
+    public ResponseEntity<Object> inactiveUserStatus(@PathVariable(value="id") UUID id) {
+        userService.inactiveUser(id);
+        return ResponseEntity.ok("User's status was successfully changed");
     }
 
 }

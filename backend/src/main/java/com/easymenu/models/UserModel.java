@@ -1,15 +1,17 @@
 package com.easymenu.models;
 
+import com.easymenu.enums.UserStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -27,18 +29,25 @@ public class UserModel implements Serializable {
     private String email;
     private String password;
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<OrderModel> orders = new ArrayList<>();
+
     @CreationTimestamp
     private Instant createdOn;
     @UpdateTimestamp
     private Instant updatedOn;
 
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
+
 
     public UserModel() {}
 
-    public UserModel( String name, String email, String password) {
+    public UserModel( String name, String email, String password, UserStatus status) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.status = status;
     }
 
 }

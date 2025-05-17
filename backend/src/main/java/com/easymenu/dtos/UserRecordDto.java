@@ -1,5 +1,6 @@
 package com.easymenu.dtos;
 
+import com.easymenu.enums.UserStatus;
 import jakarta.validation.constraints.*;
 
 import java.time.Instant;
