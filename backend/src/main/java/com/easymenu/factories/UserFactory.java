@@ -3,6 +3,7 @@ package com.easymenu.factories;
 import com.easymenu.dtos.UserRecordDto;
 import com.easymenu.dtos.UserResponseDto;
 import com.easymenu.dtos.UserUpdateDto;
+import com.easymenu.enums.UserStatus;
 import com.easymenu.exceptions.UserException;
 import com.easymenu.models.UserModel;
 import lombok.extern.slf4j.Slf4j;
@@ -19,9 +20,9 @@ public class UserFactory {
             throw new UserException("UserRecordDto is null");
         }
 
-        // THE PASSWORD MUST BE SCRIPTED LATER USING SPRING SECURITY @PASSWORDENCODER
+        // THE PASSWORD MUST BE SCRIPTED LATER USING SPRING SECURITY @PASSWORD ENCODER
 
-        return new UserModel(userRecordDto.name(), userRecordDto.email(), userRecordDto.password());
+        return new UserModel(userRecordDto.name(), userRecordDto.email(), userRecordDto.password(), UserStatus.ACTIVE);
     }
 
     public void applyUpdates(UserUpdateDto updates, UserModel existingUser) {
@@ -47,7 +48,8 @@ public class UserFactory {
                 user.getName(),
                 user.getEmail(),
                 user.getCreatedOn(),
-                user.getUpdatedOn());
+                user.getUpdatedOn(),
+                user.getStatus());
     }
 
 }
