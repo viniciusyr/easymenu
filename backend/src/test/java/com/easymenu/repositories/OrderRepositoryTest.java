@@ -1,6 +1,7 @@
 package com.easymenu.repositories;
 
-import com.easymenu.models.OrderModel;
+import com.easymenu.order.OrderModel;
+import com.easymenu.order.OrderRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
