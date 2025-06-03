@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class ProductResponseDto extends RepresentationModel<ProductResponseDto> {
+public class ProductResponseDTO extends RepresentationModel<ProductResponseDTO> {
 
     private UUID id;
     private Long batchId;
@@ -23,7 +23,7 @@ public class ProductResponseDto extends RepresentationModel<ProductResponseDto> 
     private Instant createdOn;
     private Instant updatedOn;
 
-    public ProductResponseDto(UUID id, Long batchId, String name, String description, BigDecimal price, LocalDate validityStart, LocalDate validityEnd, Instant createdOn, Instant updatedOn) {
+    public ProductResponseDTO(UUID id, Long batchId, String name, String description, BigDecimal price, LocalDate validityStart, LocalDate validityEnd, Instant createdOn, Instant updatedOn) {
         this.id = id;
         this.name = name;
         this.batchId = batchId;
@@ -35,7 +35,7 @@ public class ProductResponseDto extends RepresentationModel<ProductResponseDto> 
         this.updatedOn = updatedOn;
     }
 
-    public ProductResponseDto(UUID id, String name, BigDecimal price) {
+    public ProductResponseDTO(UUID id, String name, BigDecimal price) {
         this.id = id;
         this.name = name;
         this.price = price;

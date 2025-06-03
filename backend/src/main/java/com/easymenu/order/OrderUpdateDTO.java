@@ -5,7 +5,7 @@ import com.easymenu.product.ProductModel;
 
 import java.util.List;
 
-public record OrderUpdateDto(List<ProductModel> products,
+public record OrderUpdateDTO(List<ProductModel> products,
                              String observation,
                              OrderStatus status) {
 }

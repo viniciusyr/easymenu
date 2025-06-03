@@ -18,8 +18,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/users")
-    public ResponseEntity<List<UserResponseDto>> getAllUsers() {
-        List<UserResponseDto> usersList = userService.getUsers();
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        List<UserResponseDTO> usersList = userService.getUsers();
         if (usersList.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -32,15 +32,15 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<UserResponseDto> getOneUser(@PathVariable(value="id") UUID id) {
-        UserResponseDto user = userService.getOneUser(id);
+    public ResponseEntity<UserResponseDTO> getOneUser(@PathVariable(value="id") UUID id) {
+        UserResponseDTO user = userService.getOneUser(id);
         user.add(linkTo(methodOn(UserController.class).getOneUser(id)).withSelfRel());
         return ResponseEntity.ok(user);
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<UserResponseDto> updateUser(@RequestBody @Valid UserUpdateDto userUpdatedDto, @PathVariable(value="id") UUID id) {
-        UserResponseDto updatedUser = userService.updateUser(userUpdatedDto, id);
+    public ResponseEntity<UserResponseDTO> updateUser(@RequestBody @Valid UserUpdateDTO userUpdatedDto, @PathVariable(value="id") UUID id) {
+        UserResponseDTO updatedUser = userService.updateUser(userUpdatedDto, id);
         return ResponseEntity.ok(updatedUser);
     }
 

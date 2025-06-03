@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDto createUser(UserRecordDto userRecordDto) {
+    public UserResponseDTO createUser(UserRecordDTO userRecordDto) {
         if (userRepository.existsByEmail(userRecordDto.email())) {
             throw new UserException.EmailAlreadyExistsException("Email already exists");
         }
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
         String encodedPassword = passwordEncoder.encode(userRecordDto.password());
 
         UserModel newUser =  userFactory.createUser(
-                new UserRecordDto(
+                new UserRecordDTO(
                         userRecordDto.name(),
                         userRecordDto.email(),
                         encodedPassword,
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDto updateUser(UserUpdateDto userUpdateDto, UUID id) {
+    public UserResponseDTO updateUser(UserUpdateDTO userUpdateDto, UUID id) {
 
         UserModel existingUser = userRepository.findById(id)
                 .orElseThrow(() -> new UserException.UserNotFoundException("User not found: " + id));
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDto getOneUser(UUID id) {
+    public UserResponseDTO getOneUser(UUID id) {
         return userRepository.findById(id)
                 .map(user -> {
                     log.info("User found: {}", user.getEmail());
@@ -124,13 +124,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserResponseDto> getUsers() {
+    public List<UserResponseDTO> getUsers() {
         return userRepository.findAll().stream()
                 .map(userFactory::toResponseDto).toList();
     }
 
     @Override
-    public List<UserResponseDto> getUsersByStatus(UserStatus status) {
+    public List<UserResponseDTO> getUsersByStatus(UserStatus status) {
         return userRepository.findAllByStatus(status).stream()
                 .map(userFactory::toResponseDto).toList();
     }

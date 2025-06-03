@@ -9,9 +9,9 @@ import java.time.Instant;
 @Slf4j
 @Component
 public class ProductFactory {
-    public ProductModel createProduct(ProductRecordDto productRecordDto) {
+    public ProductModel createProduct(ProductRecordDTO productRecordDto) {
         if(productRecordDto == null){
-            throw new ProductException.InvalidProductRecordException("ProductRecordDto is null");
+            throw new ProductException.ProductNotFoundException("ProductRecordDTO is null");
         }
 
         return new ProductModel(productRecordDto.batchId(),
@@ -22,13 +22,13 @@ public class ProductFactory {
                 productRecordDto.validityEnd());
     }
 
-    public void applyUpdates(ProductUpdateDto updates, ProductModel existingProduct) {
+    public void applyUpdates(ProductUpdateDTO updates, ProductModel existingProduct) {
         if(updates == null){
-            throw new ProductException.InvalidProductUpdateException("ProductUpdateDto is null");
+            throw new ProductException.ProductNotFoundException("ProductUpdateDTO is null");
         }
 
         if(existingProduct == null) {
-            throw new ProductException.InvalidProductException("Existing product is null");
+            throw new ProductException.ProductNotFoundException("Existing product is null");
         }
 
         if(updates.batchId() != null) {
@@ -57,12 +57,8 @@ public class ProductFactory {
 
     }
 
-    public ProductResponseDto toResponseDto(ProductModel product){
-        if(product.getId() == null){
-            throw new ProductException.InvalidProductException("Product ID is null on toResponseDto");
-        }
-
-        return new ProductResponseDto(product.getId(),
+    public ProductResponseDTO toResponseDto(ProductModel product){
+        return new ProductResponseDTO(product.getId(),
                 product.getBatchId(),
                 product.getName(),
                 product.getDescription(),

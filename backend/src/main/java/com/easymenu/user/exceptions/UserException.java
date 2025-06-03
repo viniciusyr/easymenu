@@ -1,50 +1,29 @@
 package com.easymenu.user.exceptions;
 
-public class UserException extends RuntimeException {
+import com.easymenu.infra.exception.GlobalException;
+import org.zalando.problem.Status;
+
+public class UserException extends GlobalException {
 
     public UserException(String message) {
-        super(message);
+        super(message, "user-error", "User error", Status.BAD_REQUEST);
     }
 
-    public static class EmailAlreadyExistsException extends RuntimeException {
+    public static class EmailAlreadyExistsException extends GlobalException {
         public EmailAlreadyExistsException(String message) {
-            super(message);
+            super(message, "email-already-exists", "Email already exists", Status.CONFLICT);
         }
     }
 
-    public static class UsernameAlreadyExistsException extends RuntimeException {
+    public static class UsernameAlreadyExistsException extends GlobalException {
         public UsernameAlreadyExistsException(String message) {
-            super(message);
+            super(message, "username-already-exists", "Username already exists", Status.CONFLICT);
         }
     }
 
-    public static class InvalidUserDataException extends RuntimeException {
-        public InvalidUserDataException(String message) {
-            super(message);
-        }
-    }
-
-    public static class InvalidPasswordException extends RuntimeException {
-        public InvalidPasswordException(String message) {
-            super(message);
-        }
-    }
-
-    public static class InvalidEmailException extends RuntimeException {
-        public InvalidEmailException(String message) {
-            super(message);
-        }
-    }
-
-    public static class UserNotFoundException extends RuntimeException {
+    public static class UserNotFoundException extends GlobalException {
         public UserNotFoundException(String message) {
-            super(message);
-        }
-    }
-
-    public static class UserToResponseException extends RuntimeException {
-        public UserToResponseException(String message) {
-            super(message);
+            super(message, "user-not-found", "User not found", Status.NOT_FOUND);
         }
     }
 

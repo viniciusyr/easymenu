@@ -12,17 +12,21 @@ import java.time.Instant;
 @Component
 public class UserFactory {
 
-    public UserModel createUser(UserRecordDto userRecordDto) {
+    public UserModel createUser(UserRecordDTO userRecordDto) {
         if(userRecordDto == null){
-            throw new UserException("UserRecordDto is null");
+            throw new UserException("UserRecordDTO is null");
         }
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(userRecordDto.password());
 
-        return new UserModel(userRecordDto.name(), userRecordDto.email(), encryptedPassword, UserStatus.ACTIVE, userRecordDto.role());
+        return new UserModel(userRecordDto.name(),
+                userRecordDto.email(),
+                encryptedPassword,
+                UserStatus.ACTIVE,
+                userRecordDto.role());
     }
 
-    public void applyUpdates(UserUpdateDto updates, UserModel existingUser) {
+    public void applyUpdates(UserUpdateDTO updates, UserModel existingUser) {
         if (updates.name() != null) {
             existingUser.setName(updates.name());
         }
@@ -35,13 +39,8 @@ public class UserFactory {
         existingUser.setUpdatedOn(Instant.now());
     }
 
-    public UserResponseDto toResponseDto(UserModel user) {
-
-        if(user.getId() == null){
-            throw new UserException.UserToResponseException("User ID is null");
-        }
-
-        return new UserResponseDto(user.getId(),
+    public UserResponseDTO toResponseDto(UserModel user) {
+        return new UserResponseDTO(user.getId(),
                 user.getName(),
                 user.getEmail(),
                 user.getCreatedOn(),

@@ -19,15 +19,15 @@ public class OrderController {
     OrderService orderService;
 
     @PostMapping("/orders")
-    public ResponseEntity<OrderResponseDto> addOrder(@RequestBody @Valid OrderRecordDto order){
-        OrderResponseDto newOrder = orderService.createOrder(order);
+    public ResponseEntity<OrderResponseDTO> addOrder(@RequestBody @Valid OrderRecordDTO order){
+        OrderResponseDTO newOrder = orderService.createOrder(order);
         newOrder.add(linkTo(methodOn(OrderController.class).getOneOrder(newOrder.getOrderId())).withSelfRel());
         return ResponseEntity.status(HttpStatus.CREATED).body(newOrder);
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<List<OrderResponseDto>> getAllOrders(){
-        List<OrderResponseDto> ordersList = orderService.getAllOrders();
+    public ResponseEntity<List<OrderResponseDTO>> getAllOrders(){
+        List<OrderResponseDTO> ordersList = orderService.getAllOrders();
         if(ordersList.isEmpty()){
             return ResponseEntity.noContent().build();
         }
@@ -40,15 +40,15 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{id}")
-    public ResponseEntity<OrderResponseDto> getOneOrder(@PathVariable(value="id") UUID orderId) {
-        OrderResponseDto order = orderService.getOrderById(orderId);
+    public ResponseEntity<OrderResponseDTO> getOneOrder(@PathVariable(value="id") UUID orderId) {
+        OrderResponseDTO order = orderService.getOrderById(orderId);
         order.add(linkTo(methodOn(OrderController.class).getOneOrder(orderId)).withSelfRel());
         return ResponseEntity.ok(order);
     }
 
     @PutMapping("/orders/{id}")
-    public ResponseEntity<OrderResponseDto> updateOrder(@RequestBody @Valid OrderUpdateDto orderUpdateDto, @PathVariable(value="id") UUID orderId){
-        OrderResponseDto updateOrder = orderService.updateOrder(orderUpdateDto, orderId);
+    public ResponseEntity<OrderResponseDTO> updateOrder(@RequestBody @Valid OrderUpdateDTO orderUpdateDto, @PathVariable(value="id") UUID orderId){
+        OrderResponseDTO updateOrder = orderService.updateOrder(orderUpdateDto, orderId);
         return ResponseEntity.ok(updateOrder);
     }
 

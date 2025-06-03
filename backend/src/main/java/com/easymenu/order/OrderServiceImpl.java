@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public OrderResponseDto createOrder(OrderRecordDto orderDto) {
+    public OrderResponseDTO createOrder(OrderRecordDTO orderDto) {
 
         if(orderDto == null){
             throw new OrderException.OrderNotFoundException("OrderDto is null or wasn't found");
@@ -70,7 +70,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderResponseDto updateOrder(OrderUpdateDto orderDto, UUID orderId) {
+    public OrderResponseDTO updateOrder(OrderUpdateDTO orderDto, UUID orderId) {
         OrderModel existingOrder = orderRepository.findById(orderId)
                 .orElseThrow(() -> new OrderException.OrderNotFoundException("Order not found!"));
 
@@ -89,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderResponseDto getOrderById(UUID orderId) {
+    public OrderResponseDTO getOrderById(UUID orderId) {
         return orderRepository.findById(orderId)
                 .map(order -> {
                     log.info("Order found: {}", order.getOrderNumber());
@@ -99,7 +99,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderResponseDto> getAllOrders() {
+    public List<OrderResponseDTO> getAllOrders() {
         List<OrderModel> orders = orderRepository.findAll();
         log.info("Total Orders found: {}", orders.size());
         return orders.stream()

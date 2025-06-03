@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-public class UserResponseDto extends RepresentationModel<UserResponseDto> {
+public class UserResponseDTO extends RepresentationModel<UserResponseDTO> {
 
     private UUID id;
     private String name;
@@ -23,7 +23,7 @@ public class UserResponseDto extends RepresentationModel<UserResponseDto> {
 
 
 
-    public UserResponseDto(UUID id, String name, String email, Instant createdOn, Instant updatedOn, UserStatus status, UserRole role) {
+    public UserResponseDTO(UUID id, String name, String email, Instant createdOn, Instant updatedOn, UserStatus status, UserRole role) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -34,7 +34,7 @@ public class UserResponseDto extends RepresentationModel<UserResponseDto> {
     }
 
 
-    public UserResponseDto(UUID id, String name, String email, UserStatus status, UserRole role) {
+    public UserResponseDTO(UUID id, String name, String email, UserStatus status, UserRole role) {
         this.id = id;
         this.name = name;
         this.email = email;

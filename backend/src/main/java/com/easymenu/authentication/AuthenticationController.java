@@ -1,7 +1,7 @@
 package com.easymenu.authentication;
 
-import com.easymenu.user.UserRecordDto;
-import com.easymenu.user.UserResponseDto;
+import com.easymenu.user.UserRecordDTO;
+import com.easymenu.user.UserResponseDTO;
 import com.easymenu.user.exceptions.UserException;
 import com.easymenu.infra.security.TokenService;
 import com.easymenu.user.UserModel;
@@ -29,19 +29,19 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody @Valid AuthenticationRecordDto authenticationDto){
+    public ResponseEntity<?> login(@RequestBody @Valid AuthenticationRecordDTO authenticationDto){
         var userPassword = new UsernamePasswordAuthenticationToken(authenticationDto.name(), authenticationDto.password());
         var auth = this.authenticationManager.authenticate(userPassword);
 
         var token = tokenService.generateToken((UserModel) auth.getPrincipal());
 
-        return ResponseEntity.ok(new LoginResponseDto(token));
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid UserRecordDto registerDto) {
+    public ResponseEntity<?> register(@RequestBody @Valid UserRecordDTO registerDto) {
         try {
-            UserResponseDto createdUser = userService.createUser(registerDto);
+            UserResponseDTO createdUser = userService.createUser(registerDto);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
 
         } catch (UserException.EmailAlreadyExistsException | UserException.UsernameAlreadyExistsException e) {

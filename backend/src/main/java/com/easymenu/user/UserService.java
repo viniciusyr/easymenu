@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.UUID;
 
 public interface UserService {
-    UserResponseDto createUser(UserRecordDto userRecordDto);
-    UserResponseDto updateUser(UserUpdateDto userUpdateDto, UUID id);
+    UserResponseDTO createUser(UserRecordDTO userRecordDto);
+    UserResponseDTO updateUser(UserUpdateDTO userUpdateDto, UUID id);
     void inactiveUser(UUID id);
-    UserResponseDto getOneUser(UUID id);
+    UserResponseDTO getOneUser(UUID id);
     UserDetails findByName(String name);
-    List<UserResponseDto> getUsers();
-    List<UserResponseDto> getUsersByStatus(UserStatus status);
+    List<UserResponseDTO> getUsers();
+    List<UserResponseDTO> getUsersByStatus(UserStatus status);
 
 }
