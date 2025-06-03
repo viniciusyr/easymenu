@@ -5,9 +5,9 @@ import java.util.UUID;
 
 
 public interface ProductService {
-    ProductResponseDto createProduct(ProductRecordDto product);
-    ProductResponseDto updateProduct(ProductUpdateDto product, UUID id);
+    ProductResponseDTO createProduct(ProductRecordDTO product);
+    ProductResponseDTO updateProduct(ProductUpdateDTO product, UUID id);
     void deleteProduct(UUID id);
-    ProductResponseDto findProductById(UUID id);
-    List<ProductResponseDto> findAllProduct();
+    ProductResponseDTO findProductById(UUID id);
+    List<ProductResponseDTO> findAllProduct();
 }

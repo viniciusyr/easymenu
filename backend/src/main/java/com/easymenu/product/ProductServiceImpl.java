@@ -21,9 +21,9 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public ProductResponseDto createProduct(ProductRecordDto product) {
+    public ProductResponseDTO createProduct(ProductRecordDTO product) {
         if(product == null){
-            throw new ProductException.InvalidProductRecordException("Product is null");
+            throw new ProductException("ProductRecordDTO is null");
         }
 
         if(productRepository.existsByName(product.name())){
@@ -38,19 +38,19 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponseDto updateProduct(ProductUpdateDto product, UUID id) {
+    public ProductResponseDTO updateProduct(ProductUpdateDTO product, UUID id) {
         ProductModel existingProduct = productRepository.findById(id)
-                .orElseThrow(() -> new ProductException.ProductNotFoundException("Product not found to update"));
+                .orElseThrow(() -> new ProductException.ProductNotFoundException("Product not found to update! ID: " + id));
 
         if(product.name() != null && !product.name().isBlank()){
             if(productRepository.existsByName(product.name())){
-                throw new ProductException.NameAlreadyExistsException("Product Name already exists");
+                throw new ProductException.NameAlreadyExistsException("Product Name already exists: " + product.name() );
             }
         }
 
         if(product.batchId() != null && !product.batchId().equals(existingProduct.getBatchId())){
             if(productRepository.existsByBatchId(product.batchId())){
-                throw new ProductException.BatchAlreadyExistsException("Batch already exists");
+                throw new ProductException("Batch ID is the same: " + product.batchId());
             }
         }
 
@@ -76,7 +76,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponseDto findProductById(UUID id) {
+    public ProductResponseDTO findProductById(UUID id) {
         return productRepository.findById(id).map(product -> {
             log.info("Product found: {}", product.getName());
             return productFactory.toResponseDto(product);
@@ -85,7 +85,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductResponseDto> findAllProduct() {
+    public List<ProductResponseDTO> findAllProduct() {
         return productRepository.findAll().stream()
                 .map(productFactory::toResponseDto)
                 .toList();

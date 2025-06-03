@@ -1,8 +1,8 @@
 package com.easymenu.order;
 
 import com.easymenu.order.enums.OrderStatus;
-import com.easymenu.product.ProductResponseDto;
-import com.easymenu.user.UserResponseDto;
+import com.easymenu.product.ProductResponseDTO;
+import com.easymenu.user.UserResponseDTO;
 import com.easymenu.order.exceptions.OrderException;
 import com.easymenu.product.ProductModel;
 import com.easymenu.user.UserModel;
@@ -33,7 +33,7 @@ public class OrderFactory {
         );
     }
 
-    public void updateOrder(OrderUpdateDto updates, OrderModel existingOrder) {
+    public void updateOrder(OrderUpdateDTO updates, OrderModel existingOrder) {
         if (updates == null) {
             throw new OrderException.UpdateNotFoundException("OrderUpdateDto is null");
         }
@@ -60,13 +60,13 @@ public class OrderFactory {
 
     }
 
-    public OrderResponseDto toResponseDto(OrderModel existingOrder){
-        UserResponseDto userDto = toUserResponseDto(existingOrder.getUser());
-        List<ProductResponseDto> productDto = existingOrder.getProducts().stream()
+    public OrderResponseDTO toResponseDto(OrderModel existingOrder){
+        UserResponseDTO userDto = toUserResponseDto(existingOrder.getUser());
+        List<ProductResponseDTO> productDto = existingOrder.getProducts().stream()
                 .map(this::toProductResponseDto)
                 .toList();
 
-        return new OrderResponseDto(
+        return new OrderResponseDTO(
                 existingOrder.getOrderId(),
                 existingOrder.getOrderNumber(),
                 userDto,
@@ -79,8 +79,8 @@ public class OrderFactory {
                 );
     }
 
-    private UserResponseDto toUserResponseDto(UserModel user) {
-        return new UserResponseDto(
+    private UserResponseDTO toUserResponseDto(UserModel user) {
+        return new UserResponseDTO(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
@@ -89,8 +89,8 @@ public class OrderFactory {
         );
     }
 
-    private ProductResponseDto toProductResponseDto(ProductModel product) {
-        return new ProductResponseDto(
+    private ProductResponseDTO toProductResponseDto(ProductModel product) {
+        return new ProductResponseDTO(
                 product.getId(),
                 product.getName(),
                 product.getPrice()

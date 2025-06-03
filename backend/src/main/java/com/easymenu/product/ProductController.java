@@ -19,27 +19,27 @@ public class ProductController {
     ProductService productService;
 
     @PostMapping("/products")
-    public ResponseEntity<ProductResponseDto> createProduct(@RequestBody @Valid ProductRecordDto product) {
-        ProductResponseDto newProduct = productService.createProduct(product);
-        newProduct.add(linkTo(methodOn(ProductController.class).findById(newProduct.getId())).withSelfRel());
-        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody @Valid ProductRecordDTO product) {
+            ProductResponseDTO newProduct = productService.createProduct(product);
+            newProduct.add(linkTo(methodOn(ProductController.class).findById(newProduct.getId())).withSelfRel());
+            return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<ProductResponseDto> updateProduct(@RequestBody @Valid ProductUpdateDto productUpdateDto, @PathVariable(value = "id") UUID id) {
-        ProductResponseDto updatedProduct = productService.updateProduct(productUpdateDto, id);
+    public ResponseEntity<ProductResponseDTO> updateProduct(@RequestBody @Valid ProductUpdateDTO productUpdateDto, @PathVariable(value = "id") UUID id) {
+        ProductResponseDTO updatedProduct = productService.updateProduct(productUpdateDto, id);
         return ResponseEntity.status(HttpStatus.OK).body(updatedProduct);
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<ProductResponseDto> findById(@PathVariable(value = "id")UUID id) {
-        ProductResponseDto product = productService.findProductById(id);
+    public ResponseEntity<ProductResponseDTO> findById(@PathVariable(value = "id")UUID id) {
+        ProductResponseDTO product = productService.findProductById(id);
         return ResponseEntity.status(HttpStatus.OK).body(product);
     }
 
     @GetMapping("/products")
-    public ResponseEntity<List<ProductResponseDto>> findAll() {
-        List<ProductResponseDto> products = productService.findAllProduct();
+    public ResponseEntity<List<ProductResponseDTO>> findAll() {
+        List<ProductResponseDTO> products = productService.findAllProduct();
         products.forEach(product -> product.add(linkTo(methodOn(ProductController.class)
                 .findById(product.getId())).withSelfRel()));
 
