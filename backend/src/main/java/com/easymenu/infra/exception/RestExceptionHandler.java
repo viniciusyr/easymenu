@@ -20,6 +20,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .withStatus(exception.getStatus())
                 .withDetail(exception.getMessage())
                 .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(problem);
+        return ResponseEntity.status(exception.getStatus().getStatusCode()).body(problem);
     }
 }

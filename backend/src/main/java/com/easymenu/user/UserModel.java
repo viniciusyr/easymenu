@@ -51,6 +51,7 @@ public class UserModel implements Serializable, UserDetails {
 
     @Enumerated(EnumType.STRING)
     private UserStatus status;
+
     private UserRole role;
 
     public UserModel(String name, String email, String password, UserStatus status, UserRole role) {
@@ -71,6 +72,11 @@ public class UserModel implements Serializable, UserDetails {
     @Override
     public String getUsername() {
         return this.name;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
     }
 
     @Override

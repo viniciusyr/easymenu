@@ -17,11 +17,9 @@ public class UserFactory {
             throw new UserException("UserRecordDTO is null");
         }
 
-        String encryptedPassword = new BCryptPasswordEncoder().encode(userRecordDto.password());
-
         return new UserModel(userRecordDto.name(),
                 userRecordDto.email(),
-                encryptedPassword,
+                userRecordDto.password(),
                 UserStatus.ACTIVE,
                 userRecordDto.role());
     }

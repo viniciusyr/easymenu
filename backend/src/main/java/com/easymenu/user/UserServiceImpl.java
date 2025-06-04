@@ -120,6 +120,9 @@ public class UserServiceImpl implements UserService {
         UserModel user = userRepository.findByName(name)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + name));
 
+        log.info("--- User found:{}", user.getName());
+        log.info("--- Password in DB:{}", user.getPassword());
+
         return user;
     }
 
