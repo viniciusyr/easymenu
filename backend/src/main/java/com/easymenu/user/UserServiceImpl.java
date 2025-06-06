@@ -78,6 +78,18 @@ public class UserServiceImpl implements UserService {
         }
 
         userFactory.applyUpdates(userUpdateDto, existingUser);
+        UserUpdateDTO updates = userUpdateDto;
+        if (userUpdateDto.password() != null && !userUpdateDto.password().isBlank()) {
+            String encodedPassword = passwordEncoder.encode(userUpdateDto.password());
+            updates = new UserUpdateDTO(
+                    userUpdateDto.name(),
+                    userUpdateDto.email(),
+                    encodedPassword,
+                    userUpdateDto.createdOn(),
+                    userUpdateDto.updatedOn()
+            );
+        }
+        userFactory.applyUpdates(updates, existingUser);
 
         UserModel savedUser = userRepository.save(existingUser);
 
