@@ -3,6 +3,7 @@ package com.easymenu.authentication;
 import com.easymenu.user.UserRecordDTO;
 import com.easymenu.user.UserResponseDTO;
 import com.easymenu.user.UserService;
+import com.easymenu.authentication.AuthenticationRecordDTO;
 import com.easymenu.user.enums.UserRole;
 import com.easymenu.user.enums.UserStatus;
 import com.easymenu.user.exceptions.UserException;
@@ -13,7 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.UUID;
@@ -31,7 +32,7 @@ class AuthenticationControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockitoBean
+    @MockBean
     private UserService userService;
 
     @Autowired
@@ -64,10 +65,10 @@ class AuthenticationControllerTest {
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(recordDTO)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/user-not-found"))
+                .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/email-already-exists"))
                 .andExpect(jsonPath("$.title").value("Email already exists"))
-                .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
-                .andExpect(jsonPath("$.detail").value("Username not found"));
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.detail").value("Email already exists"));
     }
 
     @Test
@@ -84,7 +85,7 @@ class AuthenticationControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/user-not-found"))
                 .andExpect(jsonPath("$.title").value("User not found"))
-                .andExpect(jsonPath("$.status").value("NOT_FOUND"))
+                .andExpect(jsonPath("$.status").value(400))
                 .andExpect(jsonPath("$.detail").value("Username not found"));
     }
 }
