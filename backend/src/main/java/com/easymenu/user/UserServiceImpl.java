@@ -90,7 +90,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void inactiveUser(UUID id) {
-
         if (!userRepository.existsById(id)) {
             throw new UserException.UserNotFoundException("Please provide a valid id");
         }
@@ -120,8 +119,8 @@ public class UserServiceImpl implements UserService {
         UserModel user = userRepository.findByName(name)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + name));
 
-        log.info("--- User found:{}", user.getName());
-        log.info("--- Password in DB:{}", user.getPassword());
+        log.info(">>> User found:{}", user.getName());
+        log.info(">>> Password in DB:{}", user.getPassword());
 
         return user;
     }
