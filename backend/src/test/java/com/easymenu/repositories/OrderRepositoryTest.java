@@ -27,14 +27,11 @@ class OrderRepositoryTest {
     @Test
     void getLastOrderNumber_ReturnsMaxOrderNumber() {
 
-        // Arrange
         OrderModel order1 = createOrder(100L);
         OrderModel order2 = createOrder(200L);
 
-        // Act
         Optional<Long> lastOrderNumber = orderRepository.getLastOrderNumber();
 
-        // Assert
         assertThat(lastOrderNumber).isPresent();
         assertThat(lastOrderNumber.get()).isEqualTo(200L);
     }

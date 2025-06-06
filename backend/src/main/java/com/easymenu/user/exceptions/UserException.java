@@ -11,19 +11,19 @@ public class UserException extends GlobalException {
 
     public static class EmailAlreadyExistsException extends GlobalException {
         public EmailAlreadyExistsException(String message) {
-            super(message, "email-already-exists", "Email already exists", Status.CONFLICT);
+            super(message, "email-already-exists", "Email already exists", Status.BAD_REQUEST);
         }
     }
 
     public static class UsernameAlreadyExistsException extends GlobalException {
         public UsernameAlreadyExistsException(String message) {
-            super(message, "username-already-exists", "Username already exists", Status.CONFLICT);
+            super(message, "username-already-exists", "Username already exists", Status.BAD_REQUEST);
         }
     }
 
     public static class UserNotFoundException extends GlobalException {
         public UserNotFoundException(String message) {
-            super(message, "user-not-found", "User not found", Status.NOT_FOUND);
+            super(message, "user-not-found", "User not found", Status.BAD_REQUEST);
         }
     }
 
