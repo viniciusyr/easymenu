@@ -23,11 +23,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponseDTO createProduct(ProductRecordDTO product) {
         if(product == null){
-            throw new ProductException("ProductRecordDTO is null");
+            throw new ProductException.ProductNotFoundException("ProductRecordDTO is null");
         }
 
         if(productRepository.existsByName(product.name())){
-            throw new ProductException(product.name() + " already exists");
+            throw new ProductException.NameAlreadyExistsException(product.name() + " already exists");
         }
 
         ProductModel newProduct = productFactory.createProduct(product);
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
 
         if(product.batchId() != null && !product.batchId().equals(existingProduct.getBatchId())){
             if(productRepository.existsByBatchId(product.batchId())){
-                throw new ProductException("Batch ID is the same: " + product.batchId());
+                throw new ProductException.InvalidBatchException("Batch ID is the same: " + product.batchId());
             }
         }
 

@@ -16,7 +16,7 @@ import java.net.URI;
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(GlobalException.class)
-    private ResponseEntity<Problem> userNotFoundHandler(GlobalException exception){
+    public ResponseEntity<Problem> userNotFoundHandler(GlobalException exception){
         Problem problem = Problem.builder()
                 .withType(URI.create("https://easymenu.app/problems/" + exception.getType()))
                 .withTitle(exception.getTitle())
