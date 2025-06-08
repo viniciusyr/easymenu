@@ -14,7 +14,7 @@ public class UserFactory {
 
     public UserModel createUser(UserRecordDTO userRecordDto) {
         if(userRecordDto == null){
-            throw new UserException("UserRecordDTO is null");
+            throw new UserException.UserNotFoundException("UserRecordDTO is null");
         }
 
         return new UserModel(userRecordDto.name(),

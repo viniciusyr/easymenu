@@ -4,11 +4,12 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.easymenu.authentication.exceptions.ResponseStatusException;
+import com.easymenu.authentication.exceptions.AuthenticationException;
 import com.easymenu.user.UserModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.zalando.problem.Status;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -29,7 +30,7 @@ public class TokenService {
                     .withExpiresAt(generateExpirationDate())
                     .sign(algorithm);
         } catch (JWTCreationException e) {
-            throw new RuntimeException("Error while generating token");
+            throw new AuthenticationException.InvalidTokenException("Error while generating token");
         }
     }
 
@@ -42,7 +43,7 @@ public class TokenService {
                     .verify(token)
                     .getSubject();
         } catch (JWTVerificationException e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid or expired token");
+            throw new AuthenticationException.InvalidTokenException("Error while validating token");
         }
     }
 
