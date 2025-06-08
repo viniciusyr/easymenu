@@ -11,13 +11,13 @@ public class AuthenticationException extends GlobalException {
 
     public static class InactiveUserException extends GlobalException{
         public InactiveUserException(String message){
-            super(message, "wrong-credentials-error", "Wrong credentials error", Status.BAD_REQUEST);
+            super(message, "inactive-user-error", "Inactive user error", Status.BAD_REQUEST);
         }
     }
 
     public static class InvalidPasswordException extends GlobalException {
         public InvalidPasswordException(String message) {
-            super(message, "incorrect-password", "Incorrect password", Status.BAD_REQUEST);
+            super(message, "invalid-credentials-error", "Invalid user credentials", Status.BAD_REQUEST);
         }
     }
 }
