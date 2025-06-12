@@ -13,7 +13,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -22,6 +21,7 @@ import java.util.UUID;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -46,11 +46,12 @@ class AuthenticationControllerTest {
         UserRecordDTO recordDTO = new UserRecordDTO("testuser", "test@example.com", "password", UserRole.USER);
         UserResponseDTO responseDTO = new UserResponseDTO(UUID.randomUUID(), "testuser", "test@example.com", UserStatus.ACTIVE, UserRole.USER);
 
-        when(userService.createUser(any(UserRecordDTO.class))).thenReturn(responseDTO);
+        when(authenticationService.register(any(UserRecordDTO.class))).thenReturn(responseDTO);
 
         mockMvc.perform(post("/auth/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(recordDTO)))
+                .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name").value("testuser"))
                 .andExpect(jsonPath("$.email").value("test@example.com"));
@@ -61,7 +62,7 @@ class AuthenticationControllerTest {
 
         UserRecordDTO recordDTO = new UserRecordDTO("testuser2", "test@example.com", "password", UserRole.USER);
 
-        when(userService.createUser(any(UserRecordDTO.class)))
+        when(authenticationService.register(any(UserRecordDTO.class)))
                 .thenThrow(new UserException.EmailAlreadyExistsException("Email already exists"));
 
         mockMvc.perform(post("/auth/register")
@@ -79,7 +80,7 @@ class AuthenticationControllerTest {
 
         AuthenticationRecordDTO dto = new AuthenticationRecordDTO("testuser2", "password");
 
-        when(userService.findByName("testuser2"))
+        when(authenticationService.login(dto))
                 .thenThrow(new UserException.UserNotFoundException("Username not found"));
 
         mockMvc.perform(post("/auth/login")

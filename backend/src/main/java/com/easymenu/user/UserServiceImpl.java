@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO createUser(UserRecordDTO userRecordDto) {
+        System.out.println(">>> Entrou no UserService real");
         if (userRepository.existsByEmail(userRecordDto.email())) {
             throw new UserException.EmailAlreadyExistsException("Email already exists");
         }
