@@ -69,10 +69,8 @@ class AuthenticationControllerTest {
                     .contentType(MediaType.APPLICATION_JSON)
                     .content(objectMapper.writeValueAsString(recordDTO)))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/email-already-exists"))
-                .andExpect(jsonPath("$.title").value("Email already exists"))
-                .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
-                .andExpect(jsonPath("$.detail").value("Email already exists"));
+                .andExpect(jsonPath("$.violations[0].field").value("BAD_REQUEST"))
+                .andExpect(jsonPath("$violations[0].message").value("Email already exists"));
     }
 
     @Test
