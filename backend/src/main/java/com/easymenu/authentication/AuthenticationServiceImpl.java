@@ -41,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
         }
 
         if(!userDetails.isAccountNonLocked()){
-            throw new AuthenticationException.InactiveUserException("User account status is currently inactive");
+                throw new AuthenticationException.InactiveUserException("User account status is currently inactive");
         }
 
         var userPassword = new UsernamePasswordAuthenticationToken(authenticationDTO.name(), authenticationDTO.password());
