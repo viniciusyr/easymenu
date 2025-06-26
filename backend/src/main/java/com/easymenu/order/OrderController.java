@@ -1,11 +1,16 @@
 package com.easymenu.order;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,6 +50,19 @@ public class OrderController {
         order.add(linkTo(methodOn(OrderController.class).getOneOrder(orderId)).withSelfRel());
         return ResponseEntity.ok(order);
     }
+
+    @GetMapping("/orders/search")
+    public ResponseEntity<Page<OrderResponseDTO>> getOrderByCriteria(@RequestBody OrderSearchDTO orderSearchDTO, Pageable pageable) throws JsonProcessingException {
+        Page<OrderResponseDTO> orders = orderService.findByCriteria(orderSearchDTO, pageable);
+        orders.forEach(order ->
+                order.add(linkTo(methodOn(OrderController.class).getOneOrder(order.getOrderId())).withSelfRel()));
+        OrderResponseDTO first = orders.getContent().get(0);
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(first);
+        System.out.println(json);
+        return ResponseEntity.ok(new PageImpl<>(List.of(first)));
+    }
+
 
     @PutMapping("/orders/{id}")
     public ResponseEntity<OrderResponseDTO> updateOrder(@RequestBody @Valid OrderUpdateDTO orderUpdateDto, @PathVariable(value="id") UUID orderId){

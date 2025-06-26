@@ -21,7 +21,7 @@ public record ProductRecordDTO(@NotNull(message = "The batchId is required.")
 
                                @NotNull(message = "Price is required")
                                @DecimalMin(value = "0.01", inclusive = true, message = "Price must be greater than zero")
-                               @DecimalMax(value = "50.000", inclusive = true, message = "Price must be lower than 50K")
+                               @DecimalMax(value = "50000.00", inclusive = true, message = "Price must be lower than 50K")
                                BigDecimal price,
 
                                @NotNull(message = "Validity start date is required")

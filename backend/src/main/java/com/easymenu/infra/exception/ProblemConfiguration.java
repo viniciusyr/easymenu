@@ -17,7 +17,9 @@ public class ProblemConfiguration {
         mapper.registerModule(new ProblemModule().withStackTraces(false));
         mapper.registerModule(new ConstraintViolationProblemModule());
         mapper.registerModule(new JavaTimeModule());
+
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         return mapper;
     }
 }

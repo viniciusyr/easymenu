@@ -36,4 +36,10 @@ public class OrderException extends GlobalException {
             super(message, "order-update-not-found", "Order update not found", Status.NOT_FOUND);
         }
     }
+
+    public static class FilterNotFoundException extends OrderException {
+        public FilterNotFoundException(String message) {
+            super(message, "search-filter-not-found", "Search filter not found", Status.NOT_FOUND);
+        }
+    }
 }
