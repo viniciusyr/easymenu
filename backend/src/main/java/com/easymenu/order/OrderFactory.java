@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -62,9 +63,9 @@ public class OrderFactory {
 
     public OrderResponseDTO toResponseDto(OrderModel existingOrder){
         UserResponseDTO userDto = toUserResponseDto(existingOrder.getUser());
-        List<ProductResponseDTO> productDto = existingOrder.getProducts().stream()
+        List<ProductResponseDTO> productDto = new ArrayList<>(existingOrder.getProducts().stream()
                 .map(this::toProductResponseDto)
-                .toList();
+                .toList());
 
         return new OrderResponseDTO(
                 existingOrder.getOrderId(),

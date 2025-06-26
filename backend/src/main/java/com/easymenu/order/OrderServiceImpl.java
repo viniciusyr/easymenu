@@ -7,9 +7,14 @@ import com.easymenu.product.ProductRepository;
 import com.easymenu.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Pageable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -38,15 +43,15 @@ public class OrderServiceImpl implements OrderService {
     public OrderResponseDTO createOrder(OrderRecordDTO orderDto) {
 
         if(orderDto == null){
-            throw new OrderException.OrderNotFoundException("OrderDto is null or wasn't found");
+            throw new OrderException.OrderNotFoundException("OrderDto is null or not found");
         }
 
         UserModel user = userRepository.findById(orderDto.userId())
-                .orElseThrow(() -> new OrderException.UserNotFoundException("The user wasn't found"));
+                .orElseThrow(() -> new OrderException.UserNotFoundException("The user not found"));
 
         List<ProductModel> products = productRepository.findAllById(orderDto.productsId());
         if(products.size() != orderDto.productsId().size()){
-            throw new OrderException.ProductNotFoundException("One or more products weren't found");
+            throw new OrderException.ProductNotFoundException("One or more products not found");
         }
 
         long lastOrderNumber = orderRepository.getLastOrderNumber().orElse(0L);
@@ -72,7 +77,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderResponseDTO updateOrder(OrderUpdateDTO orderDto, UUID orderId) {
         OrderModel existingOrder = orderRepository.findById(orderId)
-                .orElseThrow(() -> new OrderException.OrderNotFoundException("Order not found!"));
+                .orElseThrow(() -> new OrderException.UpdateNotFoundException("Order not found!"));
 
         orderFactory.updateOrder(orderDto, existingOrder);
 
@@ -84,19 +89,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void deleteOrder(UUID orderId) {
-
-    }
-
-    @Override
     public OrderResponseDTO getOrderById(UUID orderId) {
         return orderRepository.findById(orderId)
                 .map(order -> {
-                    log.info("Order found: {}", order.getOrderNumber());
+                    log.info("Order found by ID: {}", order.getOrderNumber());
                     return orderFactory.toResponseDto(order);
                 })
-                .orElseThrow(() -> new OrderException.OrderNotFoundException("Order not found: " + orderId));
+                .orElseThrow(() -> new OrderException.OrderNotFoundException("Order not found by ID: " + orderId));
     }
+
 
     @Override
     public List<OrderResponseDTO> getAllOrders() {
@@ -106,4 +107,46 @@ public class OrderServiceImpl implements OrderService {
                 .map(orderFactory::toResponseDto)
                 .toList();
     }
+
+    @Override
+    public Page<OrderResponseDTO> findByCriteria(OrderSearchDTO searchDto, Pageable pageable) {
+        if (searchDto == null) {
+            throw new OrderException.FilterNotFoundException("SearchDTO is null");
+        }
+
+        Specification<OrderModel> spec = Specification.where(null);
+
+        if (searchDto.orderId() != null) {
+            spec = spec.and(OrderSpecs.hasId(searchDto.orderId()));
+        }
+
+        if (searchDto.orderNumber() != null) {
+            spec = spec.and(OrderSpecs.hasOrderNumber(searchDto.orderNumber()));
+        }
+
+        if (searchDto.userId() != null) {
+            spec = spec.and(OrderSpecs.hasUserId(searchDto.userId()));
+        }
+
+        if (searchDto.status() != null){
+            spec = spec.and(OrderSpecs.inStatus(searchDto.status()));
+        }
+
+        if (searchDto.minAmount() != null && searchDto.maxAmount() != null){
+            spec = spec.and(OrderSpecs.betweenAmount(searchDto.minAmount(), searchDto.maxAmount()));
+        }
+
+        if (searchDto.observation() != null){
+            spec = spec.and(OrderSpecs.containsObservation(searchDto.observation()));
+        }
+
+        if (searchDto.startDate() != null && searchDto.endDate() != null) {
+            spec = spec.and(OrderSpecs.betweenDates(searchDto.startDate(), searchDto.endDate()));
+        }
+
+        List<OrderModel> result = orderRepository.findAll(spec);
+
+        return new PageImpl<>(new ArrayList<>(result.stream().map(orderFactory::toResponseDto).toList()));
+    }
+
 }
