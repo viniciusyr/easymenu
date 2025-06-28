@@ -1,6 +1,6 @@
 package com.easymenu.product;
 
-import com.easymenu.product.annotations.ValidDateRange;
+import com.easymenu.product.validations.ValidDateRange;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;

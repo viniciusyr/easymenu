@@ -1,4 +1,4 @@
-package com.easymenu.product.annotations;
+package com.easymenu.product.validations;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

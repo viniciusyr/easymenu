@@ -1,8 +1,13 @@
 package com.easymenu.infra.exception;
 
+import com.easymenu.authentication.exceptions.AuthenticationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import org.flywaydb.core.internal.util.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -45,6 +50,36 @@ public class RestExceptionHandler {
                 .body(problem);
     }
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+       public ResponseEntity<Problem> handleNotReadable(HttpMessageNotReadableException exception) {
+        Throwable rootCause = ExceptionUtils.getRootCause(exception);
+
+        if(rootCause instanceof InvalidFormatException invalidFormat){
+            String field = extractField(invalidFormat.getPath());
+            String value = String.valueOf(invalidFormat.getValue());
+
+            Problem problem = Problem.builder().
+                    withType(URI.create("https://easymenu.app/problems/invalid-format"))
+                    .withTitle("Invalid Format")
+                    .withStatus(Status.BAD_REQUEST)
+                    .withDetail("Wrong type value for the field:" + field)
+                    .with("timestamp", Instant.now())
+                    .with("Invalid value", value)
+                    .build();
+
+            return ResponseEntity.badRequest().body(problem);
+        }
+
+        Problem genericProblem = Problem.builder().
+                withType(URI.create("https://easymenu.app/problems/json-error"))
+                .withTitle("Error JSON")
+                .withStatus(Status.BAD_REQUEST)
+                .withDetail("The submitted JSON could not be processed")
+                .build();
+
+        return ResponseEntity.badRequest().body(genericProblem);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Problem> handleGeneric(Exception ex) {
         Problem problem = Problem.builder()
@@ -59,4 +94,9 @@ public class RestExceptionHandler {
                 .contentType(MediaType.APPLICATION_PROBLEM_JSON)
                 .body(problem);
     }
+
+    private String extractField(List<JsonMappingException.Reference> path) {
+        return path.isEmpty() ? "unknown" : path.get(path.size() -1).getFieldName();
+    }
+
 }
