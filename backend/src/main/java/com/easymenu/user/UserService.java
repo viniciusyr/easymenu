@@ -1,8 +1,10 @@
 package com.easymenu.user;
 
 import com.easymenu.user.enums.UserStatus;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,5 +16,6 @@ public interface UserService {
     UserDetails findByName(String name);
     List<UserResponseDTO> getUsers();
     List<UserResponseDTO> getUsersByStatus(UserStatus status);
+    Page<UserResponseDTO> findByCriteria(UserSearchDTO userSearchDTO, Pageable pageable);
 
 }
