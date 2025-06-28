@@ -1,4 +1,4 @@
-package com.easymenu.product.annotations;
+package com.easymenu.product.validations;
 
 import com.easymenu.product.ProductRecordDTO;
 import jakarta.validation.ConstraintValidator;

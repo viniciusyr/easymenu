@@ -10,7 +10,7 @@ import java.util.UUID;
 public class OrderSpecs {
     public static Specification<OrderModel> hasId(UUID providedId){
         return (root, query, criteriaBuilder) ->
-                criteriaBuilder.equal(root.get("id"), providedId);
+                criteriaBuilder.equal(root.get("orderId"), providedId);
     }
 
     public static Specification<OrderModel> hasOrderNumber(Long providedOrder){
@@ -35,7 +35,7 @@ public class OrderSpecs {
 
     public static Specification<OrderModel> containsObservation(String providedObservation){
         return (root, query, criteriaBuilder) ->
-                criteriaBuilder.like(criteriaBuilder.lower(root.get("description")), providedObservation);
+                criteriaBuilder.like(criteriaBuilder.lower(root.get("observation")), providedObservation);
     }
 
     public static Specification<OrderModel> betweenDates(LocalDate start,LocalDate end){
