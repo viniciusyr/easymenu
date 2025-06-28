@@ -1,6 +1,7 @@
 package com.easymenu.user.exceptions;
 
 import com.easymenu.infra.exception.GlobalException;
+import com.easymenu.order.exceptions.OrderException;
 import org.zalando.problem.Status;
 
 public abstract class UserException extends GlobalException {
@@ -22,7 +23,13 @@ public abstract class UserException extends GlobalException {
 
     public static class UserNotFoundException extends UserException {
         public UserNotFoundException(String message) {
-            super(message, "user-not-found", "User not found", Status.BAD_REQUEST);
+            super(message, "user-not-found", "User not found", Status.NOT_FOUND);
+        }
+    }
+
+    public static class FilterNotFoundException extends UserException {
+        public FilterNotFoundException(String message) {
+            super(message, "search-filter-not-found", "Search filter not found", Status.NOT_FOUND);
         }
     }
 }

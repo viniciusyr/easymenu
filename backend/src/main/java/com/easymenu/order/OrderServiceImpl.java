@@ -110,37 +110,37 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderResponseDTO> findByCriteria(OrderSearchDTO searchDto, Pageable pageable) {
-        if (searchDto == null) {
+        if(searchDto == null) {
             throw new OrderException.FilterNotFoundException("SearchDTO is null");
         }
 
         Specification<OrderModel> spec = Specification.where(null);
 
-        if (searchDto.orderId() != null) {
+        if(searchDto.orderId() != null) {
             spec = spec.and(OrderSpecs.hasId(searchDto.orderId()));
         }
 
-        if (searchDto.orderNumber() != null) {
+        if(searchDto.orderNumber() != null) {
             spec = spec.and(OrderSpecs.hasOrderNumber(searchDto.orderNumber()));
         }
 
-        if (searchDto.userId() != null) {
-            spec = spec.and(OrderSpecs.hasUserId(searchDto.userId()));
+        if(searchDto.userId() != null) {
+           spec = spec.and(OrderSpecs.hasUserId(searchDto.userId()));
         }
 
-        if (searchDto.status() != null){
+        if(searchDto.status() != null){
             spec = spec.and(OrderSpecs.inStatus(searchDto.status()));
         }
 
-        if (searchDto.minAmount() != null && searchDto.maxAmount() != null){
+        if(searchDto.minAmount() != null && searchDto.maxAmount() != null){
             spec = spec.and(OrderSpecs.betweenAmount(searchDto.minAmount(), searchDto.maxAmount()));
         }
 
-        if (searchDto.observation() != null){
+        if(searchDto.observation() != null){
             spec = spec.and(OrderSpecs.containsObservation(searchDto.observation()));
         }
 
-        if (searchDto.startDate() != null && searchDto.endDate() != null) {
+        if(searchDto.startDate() != null && searchDto.endDate() != null) {
             spec = spec.and(OrderSpecs.betweenDates(searchDto.startDate(), searchDto.endDate()));
         }
 

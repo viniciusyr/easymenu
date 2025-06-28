@@ -1,10 +1,13 @@
 package com.easymenu.user;
 
+import com.easymenu.utils.PageResultDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,6 +51,14 @@ public class UserController {
     public ResponseEntity<Object> inactiveUserStatus(@PathVariable(value="id") UUID id) {
         userService.inactiveUser(id);
         return ResponseEntity.ok("User's status was successfully changed");
+    }
+
+    @GetMapping("/users/search")
+    public ResponseEntity<PageResultDTO<UserResponseDTO>> findByCriteria(@RequestBody UserSearchDTO userSearchDTO, Pageable pageable){
+        Page<UserResponseDTO> users = userService.findByCriteria(userSearchDTO, pageable);
+        users.forEach(user ->
+            user.add(linkTo(methodOn(UserController.class).getOneUser(user.getId())).withSelfRel()));
+        return ResponseEntity.ok(PageResultDTO.result(users));
     }
 
 }

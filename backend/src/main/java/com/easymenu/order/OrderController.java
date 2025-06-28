@@ -51,7 +51,7 @@ public class OrderController {
     }
 
     @GetMapping("/orders/search")
-    public ResponseEntity<PageResultDTO<OrderResponseDTO>> getOrderByCriteria(@RequestBody OrderSearchDTO orderSearchDTO, Pageable pageable) throws JsonProcessingException {
+    public ResponseEntity<PageResultDTO<OrderResponseDTO>> getOrderByCriteria(@RequestBody OrderSearchDTO orderSearchDTO, Pageable pageable){
         Page<OrderResponseDTO> orders = orderService.findByCriteria(orderSearchDTO, pageable);
         orders.forEach(order ->
                 order.add(linkTo(methodOn(OrderController.class).getOneOrder(order.getOrderId())).withSelfRel()));

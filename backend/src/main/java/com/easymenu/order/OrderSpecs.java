@@ -35,7 +35,7 @@ public class OrderSpecs {
 
     public static Specification<OrderModel> containsObservation(String providedObservation){
         return (root, query, criteriaBuilder) ->
-                criteriaBuilder.like(criteriaBuilder.lower(root.get("observation")), providedObservation);
+                criteriaBuilder.like(criteriaBuilder.lower(root.get("observation")), "%" + providedObservation.toLowerCase() + "%");
     }
 
     public static Specification<OrderModel> betweenDates(LocalDate start,LocalDate end){

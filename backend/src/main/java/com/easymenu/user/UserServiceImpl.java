@@ -5,11 +5,16 @@ import com.easymenu.user.exceptions.UserException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Pageable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -148,5 +153,42 @@ public class UserServiceImpl implements UserService {
     public List<UserResponseDTO> getUsersByStatus(UserStatus status) {
         return userRepository.findAllByStatus(status).stream()
                 .map(userFactory::toResponseDto).toList();
+    }
+
+    @Override
+    public Page<UserResponseDTO> findByCriteria(UserSearchDTO userSearchDTO, Pageable pageable) {
+        if(userSearchDTO == null){
+            throw new UserException.FilterNotFoundException("searchDTO is null");
+        }
+
+        Specification<UserModel> spec = Specification.where(null);
+
+        if(userSearchDTO.id() != null){
+            spec = spec.and(UserSpecs.hasId(userSearchDTO.id()));
+        }
+
+        if(userSearchDTO.name() != null){
+            spec = spec.and(UserSpecs.containsName(userSearchDTO.name()));
+        }
+
+        if(userSearchDTO.email() != null){
+            spec = spec.and(UserSpecs.containsEmail(userSearchDTO.email()));
+        }
+
+        if(userSearchDTO.status() != null){
+            spec = spec.and(UserSpecs.hasStatus(userSearchDTO.status()));
+        }
+
+        if(userSearchDTO.role() != null){
+            spec = spec.and(UserSpecs.hasRole(userSearchDTO.role()));
+        }
+
+        if(userSearchDTO.startDate() != null && userSearchDTO.endDate() != null){
+            spec = spec.and(UserSpecs.betweenDates(userSearchDTO.startDate(), userSearchDTO.endDate()));
+        }
+
+        List<UserModel> result = userRepository.findAll(spec);
+
+        return new PageImpl<>(new ArrayList<>(result.stream().map(userFactory::toResponseDto).toList()));
     }
 }
