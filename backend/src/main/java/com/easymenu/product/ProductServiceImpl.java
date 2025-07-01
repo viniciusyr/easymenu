@@ -2,8 +2,16 @@ package com.easymenu.product;
 
 import com.easymenu.product.exceptions.ProductException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -89,6 +97,55 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll().stream()
                 .map(productFactory::toResponseDto)
                 .toList();
+    }
+
+    @Override
+    public Page<ProductResponseDTO> findByCriteria(ProductSearchDTO searchDTO, Pageable pageable) {
+        if (searchDTO == null){
+            throw new ProductException.InvalidFilterException("SearchDTO is null") ;
+        }
+
+        Specification<ProductModel> spec = Specification.where(null);
+
+        if(searchDTO.id() != null){
+            spec = spec.and(ProductSpecs.hasId(searchDTO.id()));
+        }
+
+        if(searchDTO.batchId() != null){
+            spec = spec.and(ProductSpecs.hasBatchId(searchDTO.batchId()));
+        }
+
+        if(searchDTO.name() != null){
+            spec = spec.and(ProductSpecs.containsName(searchDTO.name()));
+        }
+
+        if(searchDTO.description() != null){
+            spec = spec.and(ProductSpecs.containsDescription(searchDTO.description()));
+        }
+
+        if(searchDTO.minAmount() != null){
+            if(searchDTO.maxAmount() != null){
+                spec = spec.and(ProductSpecs.betweenPrice(searchDTO.minAmount(), searchDTO.maxAmount()));
+            } else {
+                spec = spec.and(ProductSpecs.betweenPrice(searchDTO.minAmount(), BigDecimal.valueOf(50000)));
+            }
+        }
+
+        if(searchDTO.validityEnd() != null){
+            spec = spec.and(ProductSpecs.hasEndValidation(searchDTO.validityEnd()));
+        }
+
+        if(searchDTO.startDate() != null) {
+            if(searchDTO.validityEnd() != null){
+                spec = spec.and(ProductSpecs.betweenDates(searchDTO.startDate(), searchDTO.endDate()));
+            } else {
+                spec = spec.and(ProductSpecs.betweenDates(searchDTO.startDate(), LocalDate.now()));
+            }
+        }
+
+        List<ProductModel> result = productRepository.findAll(spec);
+
+        return new PageImpl<>(new ArrayList<>(result.stream().map(productFactory::toResponseDto).toList()));
     }
 
 }

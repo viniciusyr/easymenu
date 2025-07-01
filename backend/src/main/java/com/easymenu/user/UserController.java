@@ -54,7 +54,7 @@ public class UserController {
     }
 
     @GetMapping("/users/search")
-    public ResponseEntity<PageResultDTO<UserResponseDTO>> findByCriteria(@RequestBody UserSearchDTO userSearchDTO, Pageable pageable){
+    public ResponseEntity<PageResultDTO<UserResponseDTO>> getUserByCriteria(@RequestBody UserSearchDTO userSearchDTO, Pageable pageable){
         Page<UserResponseDTO> users = userService.findByCriteria(userSearchDTO, pageable);
         users.forEach(user ->
             user.add(linkTo(methodOn(UserController.class).getOneUser(user.getId())).withSelfRel()));
