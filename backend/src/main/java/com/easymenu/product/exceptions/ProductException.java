@@ -33,9 +33,9 @@ public abstract class ProductException extends GlobalException {
         }
     }
 
-    public static class ExpiredProductException extends ProductException {
-        public ExpiredProductException(String message) {
-            super(message, "product-expired", "Product is expired", Status.BAD_REQUEST);
+    public static class InvalidFilterException extends ProductException {
+        public InvalidFilterException(String message) {
+            super(message, "invalid-filter", "Invalid filter", Status.BAD_REQUEST);
         }
     }
 }

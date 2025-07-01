@@ -1,7 +1,10 @@
 package com.easymenu.product;
 
+import com.easymenu.utils.PageResultDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +53,16 @@ public class ProductController {
     public ResponseEntity<Object> deleteProduct(@PathVariable(value = "id") UUID id) {
         productService.deleteProduct(id);
         return ResponseEntity.ok("Product deleted succesfully");
+    }
+
+    @GetMapping("/products/search")
+    public ResponseEntity<PageResultDTO<ProductResponseDTO>> getProductByCriteria(@RequestBody ProductSearchDTO productSearchDTO,
+                                                                   Pageable pageable){
+        Page<ProductResponseDTO> products = productService.findByCriteria(productSearchDTO, pageable);
+        products.forEach(product -> {
+            product.add(linkTo(methodOn(ProductController.class).findById(productSearchDTO.id())).withSelfRel());
+        });
+
+        return ResponseEntity.ok(PageResultDTO.result(products));
     }
 }
