@@ -69,13 +69,13 @@ public class ProductController {
             @Parameter(name = "price", description = "New product price (min 0.01 and max 50000.00)"),
     })
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Successfully updated. "),
+            @ApiResponse(responseCode = "200", description = "Successfully updated. "),
             @ApiResponse(responseCode = "403", description = "Access denied."),
     })
     @PutMapping("/products/{id}")
     public ResponseEntity<ProductResponseDTO> updateProduct(@RequestBody @Valid ProductUpdateDTO productUpdateDto, @PathVariable(value = "id") UUID id) {
         ProductResponseDTO updatedProduct = productService.updateProduct(productUpdateDto, id);
-        return ResponseEntity.status(HttpStatus.OK).body(updatedProduct);
+        return ResponseEntity.ok(updatedProduct);
     }
 
     @Operation(summary = "Find by ID", description = "Find a product by ID")
@@ -83,19 +83,19 @@ public class ProductController {
             @Parameter(name = "id", description = "Enter a product ID"),
     })
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Product found. "),
+            @ApiResponse(responseCode = "200", description = "Product found. "),
             @ApiResponse(responseCode = "403", description = "Access denied."),
             @ApiResponse(responseCode = "404", description = "Product not found.")
     })
     @GetMapping("/products/{id}")
     public ResponseEntity<ProductResponseDTO> findById(@PathVariable(value = "id")UUID id) {
         ProductResponseDTO product = productService.findProductById(id);
-        return ResponseEntity.status(HttpStatus.OK).body(product);
+        return ResponseEntity.ok(product);
     }
 
     @Operation(summary = "Find all Products", description = "Retrieve all products available.")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Products successfully retrieved."),
+            @ApiResponse(responseCode = "200", description = "Products successfully retrieved."),
             @ApiResponse(responseCode = "403", description = "Access denied."),
     })
     @GetMapping("/products")
@@ -103,7 +103,6 @@ public class ProductController {
         List<ProductResponseDTO> products = productService.findAllProduct();
         products.forEach(product -> product.add(linkTo(methodOn(ProductController.class)
                 .findById(product.getId())).withSelfRel()));
-
         return ResponseEntity.ok(products);
     }
 
@@ -112,7 +111,7 @@ public class ProductController {
             @Parameter(name = "id", description = "Enter a product ID to delete")
     })
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Product successfully deleted."),
+            @ApiResponse(responseCode = "200", description = "Product successfully deleted."),
             @ApiResponse(responseCode = "403", description = "Access denied."),
             @ApiResponse(responseCode = "404", description = "Product not found.")
     })
@@ -141,15 +140,15 @@ public class ProductController {
             )
     )
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Products successfully found."),
+            @ApiResponse(responseCode = "200", description = "Products successfully found."),
             @ApiResponse(responseCode = "403", description = "Access denied."),
     })
     @PostMapping("/products/search")
-    public ResponseEntity<PageResultDTO<ProductResponseDTO>> getProductByCriteria(@RequestBody ProductSearchDTO productSearchDTO,
+    public ResponseEntity<PageResultDTO<ProductResponseDTO>> findProductByCriteria(@RequestBody ProductSearchDTO productSearchDTO,
                                                                                   Pageable pageable){
         Page<ProductResponseDTO> products = productService.findByCriteria(productSearchDTO, pageable);
         products.forEach(product -> {
-            product.add(linkTo(methodOn(ProductController.class).findById(productSearchDTO.id())).withSelfRel());
+            product.add(linkTo(methodOn(ProductController.class).findById(product.getId())).withSelfRel());
         });
 
         return ResponseEntity.ok(PageResultDTO.result(products));

@@ -42,6 +42,21 @@ class AuthenticationControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
+    public void testLoginSuccess() throws Exception {
+        AuthenticationRecordDTO dto = new AuthenticationRecordDTO("testuser", "password");
+
+        LoginResponseDTO response = new LoginResponseDTO("fake-token");
+
+        when(authenticationService.login(any(AuthenticationRecordDTO.class))).thenReturn(response);
+
+        mockMvc.perform(post("/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(dto)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.token").value("fake-token"));
+    }
+
+    @Test
     public void testRegisterSuccess() throws Exception {
         UserRecordDTO recordDTO = new UserRecordDTO("testuser", "test@example.com", "password", UserRole.USER);
         UserResponseDTO responseDTO = new UserResponseDTO(UUID.randomUUID(), "testuser", "test@example.com", UserStatus.ACTIVE, UserRole.USER);
@@ -55,6 +70,28 @@ class AuthenticationControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name").value("testuser"))
                 .andExpect(jsonPath("$.email").value("test@example.com"));
+    }
+
+    @Test
+    public void testRegisterValidationError() throws Exception {
+
+        String invalidJson = """
+        {
+          "name": "",
+          "email": "oeiuqwoiquweoi",
+          "password": "",
+          "role": "USER"
+        }
+        """;
+
+        mockMvc.perform(post("/auth/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(invalidJson))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/validation-error"))
+                .andExpect(jsonPath("$.title").value("Validation Failed"))
+                .andExpect(jsonPath("$.violations").isArray())
+                .andExpect(jsonPath("$.violations.length()").value(4));
     }
 
     @Test
@@ -86,10 +123,10 @@ class AuthenticationControllerTest {
         mockMvc.perform(post("/auth/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/user-not-found"))
                 .andExpect(jsonPath("$.title").value("User not found"))
-                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.status").value(404))
                 .andExpect(jsonPath("$.detail").value("Username not found"));
     }
 }

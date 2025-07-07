@@ -16,4 +16,6 @@ public record OrderSearchDTO(
         String observation,
         LocalDate startDate,
         LocalDate endDate
-) {}
+) {
+
+}
