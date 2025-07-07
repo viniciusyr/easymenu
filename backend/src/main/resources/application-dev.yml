@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:mysql://dev-host:3306/easymenu
+    username: dev_user
+    password: dev_pass
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+cors:
+  allowed-origins: http://localhost:3000,http://dev.easymenu.app
