@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/minha_db
+    username: your_user
+    password: your_pass
