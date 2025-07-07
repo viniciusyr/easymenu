@@ -1,7 +1,5 @@
-package com.easymenu.repositories;
+package com.easymenu.order;
 
-import com.easymenu.order.OrderModel;
-import com.easymenu.order.OrderRepository;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,6 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
-@ActiveProfiles("test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class OrderRepositoryTest {
 
@@ -25,8 +22,7 @@ class OrderRepositoryTest {
     OrderRepository orderRepository;
 
     @Test
-    void getLastOrderNumber_ReturnsMaxOrderNumber() {
-
+    void getLastOrderNumber() {
         OrderModel order1 = createOrder(100L);
         OrderModel order2 = createOrder(200L);
 
@@ -40,6 +36,7 @@ class OrderRepositoryTest {
         OrderModel newOrder = new OrderModel();
         newOrder.setOrderNumber(orderNumber);
         this.entityManager.persist(newOrder);
+        this.entityManager.flush();
         return newOrder;
     }
 }

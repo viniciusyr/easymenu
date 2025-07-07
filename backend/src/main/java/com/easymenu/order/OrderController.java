@@ -18,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.data.domain.Pageable;
+
+import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,7 +58,7 @@ public class OrderController {
             @ApiResponse(responseCode = "403", description = "Validation error")
     })
     @PostMapping("/orders")
-    public ResponseEntity<OrderResponseDTO> addOrder(@RequestBody @Valid OrderRecordDTO order){
+    public ResponseEntity<OrderResponseDTO> createOrder(@RequestBody @Valid OrderRecordDTO order){
         OrderResponseDTO newOrder = orderService.createOrder(order);
         newOrder.add(linkTo(methodOn(OrderController.class).getOneOrder(newOrder.getOrderId())).withSelfRel());
         return ResponseEntity.status(HttpStatus.CREATED).body(newOrder);
@@ -119,7 +121,7 @@ public class OrderController {
             @ApiResponse(responseCode = "200", description = "Filtered orders returned successfully")
     })
     @GetMapping("/orders/search")
-    public ResponseEntity<PageResultDTO<OrderResponseDTO>> getOrderByCriteria(@RequestBody OrderSearchDTO orderSearchDTO, Pageable pageable){
+    public ResponseEntity<PageResultDTO<OrderResponseDTO>> findOrderByCriteria(@RequestBody OrderSearchDTO orderSearchDTO, Pageable pageable){
         Page<OrderResponseDTO> orders = orderService.findByCriteria(orderSearchDTO, pageable);
         orders.forEach(order ->
                 order.add(linkTo(methodOn(OrderController.class).getOneOrder(order.getOrderId())).withSelfRel()));
