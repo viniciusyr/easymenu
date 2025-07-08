@@ -44,5 +44,8 @@ public record ProductSearchDTO(
         LocalDate startDate,
 
         @Schema(description = "End date of product creation", example = "2025-01-31")
-        LocalDate endDate
+        LocalDate endDate,
+
+        @Schema(description = "Exact update date of product", example = "2025-07-08")
+        LocalDate updatedOn
 ) {}

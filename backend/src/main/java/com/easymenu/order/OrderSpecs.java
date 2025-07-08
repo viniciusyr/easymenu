@@ -43,4 +43,17 @@ public class OrderSpecs {
                 criteriaBuilder.between(root.get("createdOn"), start.atStartOfDay(), end.atTime(23,59, 59));
     }
 
+    public static Specification<OrderModel> createdAfter(LocalDate start) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.greaterThanOrEqualTo(root.get("createdOn"), start.atStartOfDay());
+    }
+
+    public static Specification<OrderModel> createdBefore(LocalDate end) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.lessThanOrEqualTo(root.get("createdOn"), end.atTime(23, 59, 59));
+    }
+
+    public static Specification<OrderModel> updatedOn(LocalDate date) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.between(root.get("updatedOn"), date.atStartOfDay(), date.atTime(23, 59, 59));
+    }
+
+
 }

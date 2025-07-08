@@ -91,16 +91,28 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
-    @Operation(summary = "Change user status", description = "Deactivates or reactivates a user by ID")
+    @Operation(summary = "Deactivate user", description = "Deactivates a user by ID")
     @Parameter(name = "id", description = "User ID", required = true)
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Status successfully changed"),
             @ApiResponse(responseCode = "404", description = "User not found")
     })
-    @PutMapping("/users/{id}/status")
+    @PutMapping("/users/{id}/deactivate")
     public ResponseEntity<Object> inactiveUserStatus(@PathVariable(value="id") UUID id) {
         userService.inactiveUser(id);
-        return ResponseEntity.ok("User's status was successfully changed");
+        return ResponseEntity.ok("User's status was successfully changed to INACTIVE");
+    }
+    @Operation(summary = "Activate user", description = "Activates a user by ID")
+    @Parameter(name = "id", description = "User ID", required = true)
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Status successfully changed"),
+            @ApiResponse(responseCode = "404", description = "User not found"),
+            @ApiResponse(responseCode = "403", description = "Access denied")
+    })
+    @PutMapping("users/{id}/active")
+    public ResponseEntity<Object> activeUserStatus(@PathVariable(value="id") UUID id){
+        userService.activeUser(id);
+        return ResponseEntity.ok("User's status was successfully changed to ACTIVE");
     }
 
     @Operation(summary = "Search users by criteria", description = "Search users with pagination and optional filters")

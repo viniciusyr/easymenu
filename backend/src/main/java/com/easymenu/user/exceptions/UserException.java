@@ -32,4 +32,10 @@ public abstract class UserException extends GlobalException {
             super(message, "search-filter-not-found", "Search filter not found", Status.NOT_FOUND);
         }
     }
+
+    public static class UserWrongStatusException extends UserException {
+        public UserWrongStatusException(String message) {
+            super(message, "wrong-user-status", "Wrong user status", Status.BAD_REQUEST);
+        }
+    }
 }
