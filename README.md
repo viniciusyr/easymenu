@@ -336,6 +336,7 @@ Here you can find the main routes of the API and examples of requests and respon
 ```
 
 <h2 id="version">📫 Versioning</h2>
+
 | Version                       | Description                                              |
 |--------------------------------|-----------------------------------------------------------|
 | <kbd>v1.0</kbd>    | Initial release: CRUD, JWT, Swagger, CI/CD |
