@@ -135,12 +135,16 @@ public class ProductServiceImpl implements ProductService {
             spec = spec.and(ProductSpecs.hasEndValidation(searchDTO.validityEnd()));
         }
 
-        if(searchDTO.startDate() != null) {
-            if(searchDTO.validityEnd() != null){
-                spec = spec.and(ProductSpecs.betweenDates(searchDTO.startDate(), searchDTO.endDate()));
-            } else {
-                spec = spec.and(ProductSpecs.betweenDates(searchDTO.startDate(), LocalDate.now()));
-            }
+        if (searchDTO.startDate() != null && searchDTO.endDate() != null) {
+            spec = spec.and(ProductSpecs.betweenDates(searchDTO.startDate(), searchDTO.endDate()));
+        } else if (searchDTO.startDate() != null) {
+            spec = spec.and(ProductSpecs.createdAfter(searchDTO.startDate()));
+        } else if (searchDTO.endDate() != null) {
+            spec = spec.and(ProductSpecs.createdBefore(searchDTO.endDate()));
+        }
+
+        if (searchDTO.updatedOn() != null) {
+            spec = spec.and(ProductSpecs.updatedOn(searchDTO.updatedOn()));
         }
 
         List<ProductModel> result = productRepository.findAll(spec);

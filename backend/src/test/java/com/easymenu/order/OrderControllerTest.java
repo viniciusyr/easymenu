@@ -73,7 +73,7 @@ class OrderControllerTest {
 
         OrderSearchDTO dto = new OrderSearchDTO(
                 null, null, userId, null,
-                null, null, null, null, null
+                null, null, null, null, null, null
         );
 
         mockMvc.perform(get("/orders/search")
@@ -91,7 +91,7 @@ class OrderControllerTest {
 
         OrderSearchDTO dto = new OrderSearchDTO(
                 null, null, UUID.randomUUID(), null,
-                null, null, null, null, null
+                null, null, null, null, null, null
         );
 
         mockMvc.perform(get("/orders/search")
@@ -107,7 +107,7 @@ class OrderControllerTest {
     void testUserNoPermission() throws Exception {
         OrderSearchDTO dto = new OrderSearchDTO(
                 null, null, UUID.randomUUID(), null,
-                null, null, null, null, null
+                null, null,null, null, null, null
         );
 
         mockMvc.perform(get("/orders/search")
@@ -124,7 +124,7 @@ class OrderControllerTest {
 
         OrderSearchDTO dto = new OrderSearchDTO(
                 null, null, UUID.randomUUID(), null,
-                null, null, null, null, null
+                null, null,null, null, null, null
         );
 
         mockMvc.perform(get("/orders/search")
@@ -134,5 +134,7 @@ class OrderControllerTest {
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/internal-error"))
                 .andExpect(jsonPath("$.title").value("Internal Error"));
+
+
     }
 }

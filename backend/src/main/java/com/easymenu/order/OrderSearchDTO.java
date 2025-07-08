@@ -15,7 +15,8 @@ public record OrderSearchDTO(
         BigDecimal maxAmount,
         String observation,
         LocalDate startDate,
-        LocalDate endDate
+        LocalDate endDate,
+        LocalDate updatedOn
 ) {
 
 }

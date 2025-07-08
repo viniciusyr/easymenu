@@ -140,8 +140,16 @@ public class OrderServiceImpl implements OrderService {
             spec = spec.and(OrderSpecs.containsObservation(searchDto.observation()));
         }
 
-        if(searchDto.startDate() != null && searchDto.endDate() != null) {
+        if (searchDto.startDate() != null && searchDto.endDate() != null) {
             spec = spec.and(OrderSpecs.betweenDates(searchDto.startDate(), searchDto.endDate()));
+        } else if (searchDto.startDate() != null) {
+            spec = spec.and(OrderSpecs.createdAfter(searchDto.startDate()));
+        } else if (searchDto.endDate() != null) {
+            spec = spec.and(OrderSpecs.createdBefore(searchDto.endDate()));
+        }
+
+        if (searchDto.updatedOn() != null) {
+            spec = spec.and(OrderSpecs.updatedOn(searchDto.updatedOn()));
         }
 
         List<OrderModel> result = orderRepository.findAll(spec);

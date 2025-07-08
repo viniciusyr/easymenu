@@ -116,7 +116,7 @@ class ProductControllerTest {
                 .thenReturn(new PageImpl<>(Collections.singletonList(product)));
 
         ProductSearchDTO dto = new ProductSearchDTO(id, null, null, null,
-                null, null, null, null, null, null);
+                null, null, null, null, null, null, null);
 
         mockMvc.perform(post("/products/search")
                         .with(user("vinicius").roles("ADMIN"))

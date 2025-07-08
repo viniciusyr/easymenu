@@ -13,6 +13,7 @@ public record UserSearchDTO(
         UserStatus status,
         UserRole role,
         LocalDate startDate,
-        LocalDate endDate
+        LocalDate endDate,
+        LocalDate updatedOn
 ) {
 }

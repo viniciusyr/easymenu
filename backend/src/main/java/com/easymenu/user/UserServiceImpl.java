@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
+
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -108,17 +110,35 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void inactiveUser(UUID id) {
-        if (!userRepository.existsById(id)) {
-            throw new UserException.UserNotFoundException("Please provide a valid id");
+        UserModel user = userRepository.findById(id)
+                .orElseThrow(() -> new UserException.UserNotFoundException("Please enter a valid id"));
+
+        if (user.getStatus() != UserStatus.ACTIVE) {
+            throw new UserException.UserWrongStatusException("The user's status is already INACTIVE");
         }
+
+        user.setStatus(UserStatus.INACTIVE);
+        user.setUpdatedOn(Instant.now());
+        userRepository.save(user);
+
+        log.info("User {} was successfully deactivated", id);
+    }
+
+    @Override
+    public void activeUser(UUID id) {
 
         UserModel user = userRepository.findById(id)
                 .orElseThrow(() ->  new UserException.UserNotFoundException("User wasn't found to change status"));
 
-        user.setStatus(UserStatus.INACTIVE);
-        userRepository.save(user);
-        log.info("User deleted successfully");
+        if(user.getStatus() != UserStatus.INACTIVE){
+            throw new UserException.UserWrongStatusException("The user's status is already ACTIVE");
+        } else {
+            user.setStatus(UserStatus.ACTIVE);
+            user.setUpdatedOn(Instant.now());
+            userRepository.save(user);
 
+            log.info("User {} was successfully activated", id);
+        }
     }
 
     @Override
@@ -129,7 +149,6 @@ public class UserServiceImpl implements UserService {
                     return userFactory.toResponseDto(user);
                 })
                 .orElseThrow(() -> new UserException.UserNotFoundException("User not found: " + id));
-
     }
 
     @Override
@@ -146,12 +165,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserResponseDTO> getUsers() {
         return userRepository.findAll().stream()
-                .map(userFactory::toResponseDto).toList();
-    }
-
-    @Override
-    public List<UserResponseDTO> getUsersByStatus(UserStatus status) {
-        return userRepository.findAllByStatus(status).stream()
                 .map(userFactory::toResponseDto).toList();
     }
 
@@ -183,8 +196,16 @@ public class UserServiceImpl implements UserService {
             spec = spec.and(UserSpecs.hasRole(userSearchDTO.role()));
         }
 
-        if(userSearchDTO.startDate() != null && userSearchDTO.endDate() != null){
+        if (userSearchDTO.startDate() != null && userSearchDTO.endDate() != null) {
             spec = spec.and(UserSpecs.betweenDates(userSearchDTO.startDate(), userSearchDTO.endDate()));
+        } else if (userSearchDTO.startDate() != null) {
+            spec = spec.and(UserSpecs.createdAfter(userSearchDTO.startDate()));
+        } else if (userSearchDTO.endDate() != null) {
+            spec = spec.and(UserSpecs.createdBefore(userSearchDTO.endDate()));
+        }
+
+        if (userSearchDTO.updatedOn() != null) {
+            spec = spec.and(UserSpecs.updatedOn(userSearchDTO.updatedOn()));
         }
 
         List<UserModel> result = userRepository.findAll(spec);
