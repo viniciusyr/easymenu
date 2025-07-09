@@ -120,7 +120,7 @@ public class OrderController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Filtered orders returned successfully")
     })
-    @GetMapping("/orders/search")
+    @PostMapping("/orders/search")
     public ResponseEntity<PageResultDTO<OrderResponseDTO>> findOrderByCriteria(@RequestBody OrderSearchDTO orderSearchDTO, Pageable pageable){
         Page<OrderResponseDTO> orders = orderService.findByCriteria(orderSearchDTO, pageable);
         orders.forEach(order ->
