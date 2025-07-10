@@ -1,11 +1,27 @@
 spring:
   profiles:
-    active: local
+    active: prod
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: false
+
   data:
     web:
-          pageable:
-            default-page-size: 10
-            max-page-size: 100
+      pageable:
+        default-page-size: 10
+        max-page-size: 100
 
 logging:
   level:
@@ -13,7 +29,6 @@ logging:
 
 problem:
   stack-trace: false
-
 
 jackson:
   serialization:

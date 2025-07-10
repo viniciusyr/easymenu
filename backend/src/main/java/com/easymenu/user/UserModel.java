@@ -52,6 +52,8 @@ public class UserModel implements Serializable, UserDetails {
     @Enumerated(EnumType.STRING)
     private UserStatus status;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
     private UserRole role;
 
     public UserModel(String name, String email, String password, UserStatus status, UserRole role) {
