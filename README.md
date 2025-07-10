@@ -56,14 +56,15 @@ cd easymenu/backend
 
 <h3> Environment Variables</h2>
 
-Copy the file `application-local-example.yml` to `application-local.yml` and update the credentials accordingly:
+The `application.yml` and others profiles are already defined, you just need to update the credential settings with your own environment variables:
 
 ```yaml
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/easymenu_db
-    username: postgres
-    password: your_password
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/easymenu_db}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
 api:
   security:
     token:
@@ -346,7 +347,7 @@ Here you can find the main routes of the API and examples of requests and respon
 <p>I leave here my invitation for you who want to contribute to my project, or if you are a student looking for a project to study by making commits and fixing bugs, know that you are more than welcome to participate. Below I leave some articles that can help you in this process as it helped me.
 </p>
 
-1. `git clone https://github.com/Fernanda-Kipper/text-editor.git`
+1. `git clone https://github.com/viniciusyr/easymenu`
 2. `git checkout -b feature/NAME`
 3. Follow commit patterns
 4. Open a Pull Request explaining the problem solved or feature made, if exists, append screenshot of visual modifications and wait for the review!
