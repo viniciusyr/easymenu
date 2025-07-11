@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DBPROD_URL:jdbc:postgresql://localhost:5433/easymenudb}
+    url: ${DBPROD_URL}
     username: ${DBPROD_USERNAME}
     password: ${DBPROD_PASSWORD}
     driver-class-name: org.postgresql.Driver
