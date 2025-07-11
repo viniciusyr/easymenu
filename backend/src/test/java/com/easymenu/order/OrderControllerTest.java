@@ -24,6 +24,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -76,7 +77,7 @@ class OrderControllerTest {
                 null, null, null, null, null, null
         );
 
-        mockMvc.perform(get("/orders/search")
+        mockMvc.perform(post("/orders/search")
                         .with(user("vinicius").roles("ADMIN"))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
@@ -94,7 +95,7 @@ class OrderControllerTest {
                 null, null, null, null, null, null
         );
 
-        mockMvc.perform(get("/orders/search")
+        mockMvc.perform(post("/orders/search")
                         .with(user("testUser").roles("ADMIN"))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
@@ -127,7 +128,7 @@ class OrderControllerTest {
                 null, null,null, null, null, null
         );
 
-        mockMvc.perform(get("/orders/search")
+        mockMvc.perform(post("/orders/search")
                         .with(user("admin").roles("ADMIN"))
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))

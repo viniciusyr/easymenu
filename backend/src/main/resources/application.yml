@@ -39,4 +39,4 @@ jackson:
 api:
   security:
     token:
-      secret: ${JWT_SECRET::my-secret-key}
+      secret: ${JWT_SECRET}
