@@ -22,4 +22,4 @@ ENV DBPROD_PASSWORD=''
 ENV SPRING_PROFILES_ACTIVE='prod'
 ENV TZ='America/Sao_Paulo'
 
-ENTRYPOINT java -jar easymenuapi.jar
+ENTRYPOINT ["java", "-jar", "easymenuapi.jar"]

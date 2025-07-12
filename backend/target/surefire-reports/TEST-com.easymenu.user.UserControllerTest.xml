@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.easymenu.user.UserControllerTest" time="1.221" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.easymenu.user.UserControllerTest" time="1.475" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -14,7 +14,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="PH"/>
     <property name="sun.boot.library.path" value="/Users/viniciusrodrigues/Library/Java/JavaVirtualMachines/temurin-17.0.15/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/surefire/surefirebooter-20250712164052508_3.jar /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/surefire 2025-07-12T16-40-52_478-jvmRun1 surefire-20250712164052508_1tmp surefire_0-20250712164052508_2tmp"/>
+    <property name="sun.java.command" value="/Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/surefire/surefirebooter-20250712173343381_3.jar /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/surefire 2025-07-12T17-33-43_350-jvmRun1 surefire-20250712173343381_1tmp surefire_0-20250712173343381_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/test-classes:/Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/classes:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-data-jpa/3.4.4/spring-boot-starter-data-jpa-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter/3.4.4/spring-boot-starter-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.4.4/spring-boot-starter-logging-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/ch/qos/logback/logback-classic/1.5.18/logback-classic-1.5.18.jar:/Users/viniciusrodrigues/.m2/repository/ch/qos/logback/logback-core/1.5.18/logback-core-1.5.18.jar:/Users/viniciusrodrigues/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.24.3/log4j-to-slf4j-2.24.3.jar:/Users/viniciusrodrigues/.m2/repository/org/apache/logging/log4j/log4j-api/2.24.3/log4j-api-2.24.3.jar:/Users/viniciusrodrigues/.m2/repository/org/slf4j/jul-to-slf4j/2.0.17/jul-to-slf4j-2.0.17.jar:/Users/viniciusrodrigues/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/Users/viniciusrodrigues/.m2/repository/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-jdbc/3.4.4/spring-boot-starter-jdbc-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/com/zaxxer/HikariCP/5.1.0/HikariCP-5.1.0.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-jdbc/6.2.5/spring-jdbc-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/hibernate/orm/hibernate-core/6.6.11.Final/hibernate-core-6.6.11.Final.jar:/Users/viniciusrodrigues/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/Users/viniciusrodrigues/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/Users/viniciusrodrigues/.m2/repository/org/jboss/logging/jboss-logging/3.6.1.Final/jboss-logging-3.6.1.Final.jar:/Users/viniciusrodrigues/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.3.Final/hibernate-commons-annotations-7.0.3.Final.jar:/Users/viniciusrodrigues/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/Users/viniciusrodrigues/.m2/repository/net/bytebuddy/byte-buddy/1.15.11/byte-buddy-1.15.11.jar:/Users/viniciusrodrigues/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/viniciusrodrigues/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/viniciusrodrigues/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/viniciusrodrigues/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/viniciusrodrigues/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/viniciusrodrigues/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/Users/viniciusrodrigues/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/data/spring-data-jpa/3.4.4/spring-data-jpa-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/data/spring-data-commons/3.4.4/spring-data-commons-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-orm/6.2.5/spring-orm-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-tx/6.2.5/spring-tx-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/slf4j/slf4j-api/2.0.17/slf4j-api-2.0.17.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-aspects/6.2.5/spring-aspects-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/aspectj/aspectjweaver/1.9.23/aspectjweaver-1.9.23.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-devtools/3.4.4/spring-boot-devtools-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot/3.4.4/spring-boot-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.4.4/spring-boot-autoconfigure-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-web/3.4.4/spring-boot-starter-web-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-json/3.4.4/spring-boot-starter-json-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.18.3/jackson-datatype-jdk8-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/module/jackson-module-parameter-names/2.18.3/jackson-module-parameter-names-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-tomcat/3.4.4/spring-boot-starter-tomcat-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.39/tomcat-embed-core-10.1.39.jar:/Users/viniciusrodrigues/.m2/repository/org/apache/tomcat/embed/tomcat-embed-websocket/10.1.39/tomcat-embed-websocket-10.1.39.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-web/6.2.5/spring-web-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-webmvc/6.2.5/spring-webmvc-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-validation/3.4.4/spring-boot-starter-validation-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/apache/tomcat/embed/tomcat-embed-el/10.1.39/tomcat-embed-el-10.1.39.jar:/Users/viniciusrodrigues/.m2/repository/org/hibernate/validator/hibernate-validator/8.0.2.Final/hibernate-validator-8.0.2.Final.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-hateoas/3.4.4/spring-boot-starter-hateoas-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/hateoas/spring-hateoas/2.4.1/spring-hateoas-2.4.1.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/plugin/spring-plugin-core/3.0.0/spring-plugin-core-3.0.0.jar:/Users/viniciusrodrigues/.m2/repository/org/postgresql/postgresql/42.7.5/postgresql-42.7.5.jar:/Users/viniciusrodrigues/.m2/repository/org/checkerframework/checker-qual/3.48.3/checker-qual-3.48.3.jar:/Users/viniciusrodrigues/.m2/repository/com/h2database/h2/2.3.232/h2-2.3.232.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-security/3.4.4/spring-boot-starter-security-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-aop/6.2.5/spring-aop-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/security/spring-security-config/6.4.4/spring-security-config-6.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/security/spring-security-web/6.4.4/spring-security-web-6.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/security/spring-security-test/6.4.4/spring-security-test-6.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-core/6.2.5/spring-core-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-jcl/6.2.5/spring-jcl-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-test/6.2.5/spring-test-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/flywaydb/flyway-core/10.20.1/flyway-core-10.20.1.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-toml/2.18.3/jackson-dataformat-toml-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/org/flywaydb/flyway-database-postgresql/10.20.1/flyway-database-postgresql-10.20.1.jar:/Users/viniciusrodrigues/.m2/repository/com/auth0/java-jwt/4.5.0/java-jwt-4.5.0.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.18.3/jackson-core-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.18.3/jackson-databind-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-ui/2.8.9/springdoc-openapi-starter-webmvc-ui-2.8.9.jar:/Users/viniciusrodrigues/.m2/repository/org/springdoc/springdoc-openapi-starter-webmvc-api/2.8.9/springdoc-openapi-starter-webmvc-api-2.8.9.jar:/Users/viniciusrodrigues/.m2/repository/org/springdoc/springdoc-openapi-starter-common/2.8.9/springdoc-openapi-starter-common-2.8.9.jar:/Users/viniciusrodrigues/.m2/repository/io/swagger/core/v3/swagger-core-jakarta/2.2.30/swagger-core-jakarta-2.2.30.jar:/Users/viniciusrodrigues/.m2/repository/org/apache/commons/commons-lang3/3.17.0/commons-lang3-3.17.0.jar:/Users/viniciusrodrigues/.m2/repository/io/swagger/core/v3/swagger-annotations-jakarta/2.2.30/swagger-annotations-jakarta-2.2.30.jar:/Users/viniciusrodrigues/.m2/repository/io/swagger/core/v3/swagger-models-jakarta/2.2.30/swagger-models-jakarta-2.2.30.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.18.3/jackson-dataformat-yaml-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/org/webjars/swagger-ui/5.21.0/swagger-ui-5.21.0.jar:/Users/viniciusrodrigues/.m2/repository/org/webjars/webjars-locator-lite/1.0.1/webjars-locator-lite-1.0.1.jar:/Users/viniciusrodrigues/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/security/spring-security-core/6.4.5/spring-security-core-6.4.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/security/spring-security-crypto/6.4.4/spring-security-crypto-6.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-beans/6.2.5/spring-beans-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-context/6.2.5/spring-context-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/spring-expression/6.2.5/spring-expression-6.2.5.jar:/Users/viniciusrodrigues/.m2/repository/io/micrometer/micrometer-observation/1.14.5/micrometer-observation-1.14.5.jar:/Users/viniciusrodrigues/.m2/repository/io/micrometer/micrometer-commons/1.14.5/micrometer-commons-1.14.5.jar:/Users/viniciusrodrigues/.m2/repository/org/zalando/problem-spring-web/0.29.1/problem-spring-web-0.29.1.jar:/Users/viniciusrodrigues/.m2/repository/org/zalando/problem-violations/0.29.1/problem-violations-0.29.1.jar:/Users/viniciusrodrigues/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/viniciusrodrigues/.m2/repository/org/zalando/problem-spring-common/0.29.1/problem-spring-common-0.29.1.jar:/Users/viniciusrodrigues/.m2/repository/org/zalando/faux-pas/0.9.0/faux-pas-0.9.0.jar:/Users/viniciusrodrigues/.m2/repository/jakarta/validation/jakarta.validation-api/3.0.2/jakarta.validation-api-3.0.2.jar:/Users/viniciusrodrigues/.m2/repository/org/zalando/jackson-datatype-problem/0.27.1/jackson-datatype-problem-0.27.1.jar:/Users/viniciusrodrigues/.m2/repository/org/zalando/problem/0.27.1/problem-0.27.1.jar:/Users/viniciusrodrigues/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/viniciusrodrigues/.m2/repository/me/paulschwarz/spring-dotenv/4.0.0/spring-dotenv-4.0.0.jar:/Users/viniciusrodrigues/.m2/repository/io/github/cdimascio/dotenv-java/3.0.0/dotenv-java-3.0.0.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.18.3/jackson-datatype-jsr310-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.18.3/jackson-annotations-2.18.3.jar:/Users/viniciusrodrigues/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.4.4/spring-boot-starter-test-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-test/3.4.4/spring-boot-test-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.4.4/spring-boot-test-autoconfigure-3.4.4.jar:/Users/viniciusrodrigues/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/viniciusrodrigues/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/viniciusrodrigues/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/viniciusrodrigues/.m2/repository/net/minidev/json-smart/2.5.2/json-smart-2.5.2.jar:/Users/viniciusrodrigues/.m2/repository/net/minidev/accessors-smart/2.5.2/accessors-smart-2.5.2.jar:/Users/viniciusrodrigues/.m2/repository/org/ow2/asm/asm/9.7.1/asm-9.7.1.jar:/Users/viniciusrodrigues/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/viniciusrodrigues/.m2/repository/org/awaitility/awaitility/4.2.2/awaitility-4.2.2.jar:/Users/viniciusrodrigues/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/viniciusrodrigues/.m2/repository/org/junit/jupiter/junit-jupiter/5.11.4/junit-jupiter-5.11.4.jar:/Users/viniciusrodrigues/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.11.4/junit-jupiter-api-5.11.4.jar:/Users/viniciusrodrigues/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/Users/viniciusrodrigues/.m2/repository/org/junit/platform/junit-platform-commons/1.11.4/junit-platform-commons-1.11.4.jar:/Users/viniciusrodrigues/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.11.4/junit-jupiter-params-5.11.4.jar:/Users/viniciusrodrigues/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.11.4/junit-jupiter-engine-5.11.4.jar:/Users/viniciusrodrigues/.m2/repository/org/junit/platform/junit-platform-engine/1.11.4/junit-platform-engine-1.11.4.jar:/Users/viniciusrodrigues/.m2/repository/org/mockito/mockito-core/5.14.2/mockito-core-5.14.2.jar:/Users/viniciusrodrigues/.m2/repository/net/bytebuddy/byte-buddy-agent/1.15.11/byte-buddy-agent-1.15.11.jar:/Users/viniciusrodrigues/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/viniciusrodrigues/.m2/repository/org/mockito/mockito-junit-jupiter/5.14.2/mockito-junit-jupiter-5.14.2.jar:/Users/viniciusrodrigues/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/Users/viniciusrodrigues/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/Users/viniciusrodrigues/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/Users/viniciusrodrigues/.m2/repository/io/projectreactor/reactor-test/3.7.4/reactor-test-3.7.4.jar:/Users/viniciusrodrigues/.m2/repository/io/projectreactor/reactor-core/3.7.4/reactor-core-3.7.4.jar:/Users/viniciusrodrigues/.m2/repository/org/reactivestreams/reactive-streams/1.0.4/reactive-streams-1.0.4.jar:"/>
@@ -32,7 +32,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="UTF-8"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="/Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/surefire/surefirebooter-20250712164052508_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend/target/surefire/surefirebooter-20250712173343381_3.jar"/>
     <property name="polyglot.engine.WarnInterpreterOnly" value="false"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
@@ -52,7 +52,7 @@
     <property name="user.dir" value="/Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend"/>
     <property name="os.arch" value="aarch64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="84835"/>
+    <property name="PID" value="96426"/>
     <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
     <property name="native.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/viniciusrodrigues/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
@@ -64,10 +64,10 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="61.0"/>
   </properties>
-  <testcase name="testDeactiveUserFail" classname="com.easymenu.user.UserControllerTest" time="0.02">
-    <system-out><![CDATA[2025-07-12T16:40:56.918+08:00  INFO 84835 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.easymenu.user.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-07-12T16:40:56.922+08:00  INFO 84835 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.easymenu.EasyMenuApplication for test class com.easymenu.user.UserControllerTest
-2025-07-12T16:40:56.924+08:00  INFO 84835 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="testDeactiveUserFail" classname="com.easymenu.user.UserControllerTest" time="0.023">
+    <system-out><![CDATA[2025-07-12T17:33:48.172+08:00  INFO 96426 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.easymenu.user.UserControllerTest]: UserControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-07-12T17:33:48.176+08:00  INFO 96426 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.easymenu.EasyMenuApplication for test class com.easymenu.user.UserControllerTest
+2025-07-12T17:33:48.178+08:00  INFO 96426 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,27 +78,27 @@
 
  :: Spring Boot ::                (v3.4.4)
 
-2025-07-12T16:40:56.933+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 84835 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
-2025-07-12T16:40:56.933+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
-2025-07-12T16:40:56.996+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-07-12T16:40:57.003+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
-2025-07-12T16:40:57.055+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
-2025-07-12T16:40:57.056+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn5: url=jdbc:h2:mem:testdb user=SA
-2025-07-12T16:40:57.057+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
-2025-07-12T16:40:57.057+08:00  INFO 84835 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
-2025-07-12T16:40:57.058+08:00  WARN 84835 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
-2025-07-12T16:40:57.059+08:00  INFO 84835 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
-2025-07-12T16:40:57.059+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
-2025-07-12T16:40:57.059+08:00  INFO 84835 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "PUBLIC"."flyway_schema_history" ...
-2025-07-12T16:40:57.063+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
-2025-07-12T16:40:57.064+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "1 - initial schema"
-2025-07-12T16:40:57.068+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "PUBLIC", now at version v1 (execution time 00:00.003s)
-2025-07-12T16:40:57.073+08:00  INFO 84835 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-07-12T16:40:57.074+08:00  INFO 84835 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-07-12T16:40:57.077+08:00  INFO 84835 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-07-12T16:40:57.077+08:00  WARN 84835 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
-2025-07-12T16:40:57.077+08:00  WARN 84835 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-07-12T16:40:57.077+08:00  INFO 84835 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-07-12T17:33:48.187+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 96426 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
+2025-07-12T17:33:48.187+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
+2025-07-12T17:33:48.255+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T17:33:48.260+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
+2025-07-12T17:33:48.316+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-07-12T17:33:48.317+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn5: url=jdbc:h2:mem:testdb user=SA
+2025-07-12T17:33:48.318+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-07-12T17:33:48.319+08:00  INFO 96426 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
+2025-07-12T17:33:48.319+08:00  WARN 96426 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
+2025-07-12T17:33:48.320+08:00  INFO 96426 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Schema history table "PUBLIC"."flyway_schema_history" does not exist yet
+2025-07-12T17:33:48.320+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
+2025-07-12T17:33:48.321+08:00  INFO 96426 --- [           main] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table "PUBLIC"."flyway_schema_history" ...
+2025-07-12T17:33:48.324+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": << Empty Schema >>
+2025-07-12T17:33:48.326+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Migrating schema "PUBLIC" to version "1 - initial schema"
+2025-07-12T17:33:48.330+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Successfully applied 1 migration to schema "PUBLIC", now at version v1 (execution time 00:00.003s)
+2025-07-12T17:33:48.336+08:00  INFO 96426 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T17:33:48.337+08:00  INFO 96426 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T17:33:48.340+08:00  INFO 96426 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T17:33:48.340+08:00  WARN 96426 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2025-07-12T17:33:48.340+08:00  WARN 96426 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T17:33:48.340+08:00  INFO 96426 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-5)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -106,9 +106,9 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-07-12T16:40:57.100+08:00  INFO 84835 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T17:33:48.363+08:00  INFO 96426 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:57.105+08:00  WARN 84835 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
+2025-07-12T17:33:48.368+08:00  WARN 96426 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.11.Final.jar:6.6.11.Final]
@@ -263,20 +263,20 @@ Hibernate: create table tb_user (created_on timestamp(6) with time zone, updated
 Hibernate: alter table if exists order_product add constraint FK8bu68rldjkfljnchrtrhmmrkc foreign key (product_id) references tb_product
 Hibernate: alter table if exists order_product add constraint FKc1hr3gkcmqc95fqpu9k97fq60 foreign key (order_id) references tb_order
 Hibernate: alter table if exists tb_order add constraint FK2p4n9ciui39792tk5qdpcxq1w foreign key (user_id) references tb_user
-2025-07-12T16:40:57.114+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-07-12T16:40:57.118+08:00  INFO 84835 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2025-07-12T16:40:57.153+08:00  WARN 84835 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-07-12T16:40:57.183+08:00 DEBUG 84835 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
-2025-07-12T16:40:57.225+08:00  INFO 84835 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2025-07-12T16:40:57.235+08:00  INFO 84835 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-07-12T16:40:57.235+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-07-12T16:40:57.235+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2025-07-12T16:40:57.240+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.317 seconds (process running for 4.692)
-2025-07-12T16:40:57.244+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/5f95e7d6-d0bf-4de7-ac83-61fb920cbda0/deactivate
-2025-07-12T16:40:57.244+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/5f95e7d6-d0bf-4de7-ac83-61fb920cbda0/deactivate
-2025-07-12T16:40:57.249+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:48.378+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:48.383+08:00  INFO 96426 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-12T17:33:48.426+08:00  WARN 96426 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T17:33:48.463+08:00 DEBUG 96426 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-07-12T17:33:48.512+08:00  INFO 96426 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-12T17:33:48.525+08:00  INFO 96426 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T17:33:48.526+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T17:33:48.526+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-07-12T17:33:48.532+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.355 seconds (process running for 5.11)
+2025-07-12T17:33:48.536+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/083125d5-884f-448f-b091-235e008f8bcd/deactivate
+2025-07-12T17:33:48.536+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/083125d5-884f-448f-b091-235e008f8bcd/deactivate
+2025-07-12T17:33:48.543+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:57.249+08:00 ERROR 84835 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
+2025-07-12T17:33:48.543+08:00 ERROR 96426 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
 Hibernate: alter table if exists order_product drop constraint if exists FK8bu68rldjkfljnchrtrhmmrkc
 Hibernate: alter table if exists order_product drop constraint if exists FKc1hr3gkcmqc95fqpu9k97fq60
 Hibernate: alter table if exists tb_order drop constraint if exists FK2p4n9ciui39792tk5qdpcxq1w
@@ -284,12 +284,12 @@ Hibernate: drop table if exists order_product cascade
 Hibernate: drop table if exists tb_order cascade
 Hibernate: drop table if exists tb_product cascade
 Hibernate: drop table if exists tb_user cascade
-2025-07-12T16:40:57.251+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
-2025-07-12T16:40:57.260+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-07-12T17:33:48.545+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-07-12T17:33:48.555+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
 ]]></system-out>
   </testcase>
-  <testcase name="testChangeUserStatusNotFound" classname="com.easymenu.user.UserControllerTest" time="0.043">
-    <system-out><![CDATA[2025-07-12T16:40:57.261+08:00  INFO 84835 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="testChangeUserStatusNotFound" classname="com.easymenu.user.UserControllerTest" time="0.038">
+    <system-out><![CDATA[2025-07-12T17:33:48.557+08:00  INFO 96426 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -300,24 +300,24 @@ Hibernate: drop table if exists tb_user cascade
 
  :: Spring Boot ::                (v3.4.4)
 
-2025-07-12T16:40:57.269+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 84835 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
-2025-07-12T16:40:57.270+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
-2025-07-12T16:40:57.328+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-07-12T16:40:57.333+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
-2025-07-12T16:40:57.365+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
-2025-07-12T16:40:57.365+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn10: url=jdbc:h2:mem:testdb user=SA
-2025-07-12T16:40:57.365+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
-2025-07-12T16:40:57.366+08:00  INFO 84835 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
-2025-07-12T16:40:57.366+08:00  WARN 84835 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
-2025-07-12T16:40:57.367+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
-2025-07-12T16:40:57.371+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
-2025-07-12T16:40:57.371+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
-2025-07-12T16:40:57.378+08:00  INFO 84835 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-07-12T16:40:57.379+08:00  INFO 84835 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-07-12T16:40:57.382+08:00  INFO 84835 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-07-12T16:40:57.382+08:00  WARN 84835 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
-2025-07-12T16:40:57.382+08:00  WARN 84835 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-07-12T16:40:57.382+08:00  INFO 84835 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-07-12T17:33:48.567+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 96426 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
+2025-07-12T17:33:48.567+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
+2025-07-12T17:33:48.675+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T17:33:48.688+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 3 JPA repository interfaces.
+2025-07-12T17:33:48.740+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-07-12T17:33:48.740+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn11: url=jdbc:h2:mem:testdb user=SA
+2025-07-12T17:33:48.740+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-07-12T17:33:48.741+08:00  INFO 96426 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
+2025-07-12T17:33:48.741+08:00  WARN 96426 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
+2025-07-12T17:33:48.742+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
+2025-07-12T17:33:48.743+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
+2025-07-12T17:33:48.743+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-07-12T17:33:48.751+08:00  INFO 96426 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T17:33:48.752+08:00  INFO 96426 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T17:33:48.755+08:00  INFO 96426 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T17:33:48.755+08:00  WARN 96426 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2025-07-12T17:33:48.755+08:00  WARN 96426 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T17:33:48.755+08:00  INFO 96426 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-6)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -325,9 +325,9 @@ Hibernate: drop table if exists tb_user cascade
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-07-12T16:40:57.404+08:00  INFO 84835 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T17:33:48.782+08:00  INFO 96426 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:57.404+08:00  WARN 84835 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
+2025-07-12T17:33:48.782+08:00  WARN 96426 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.11.Final.jar:6.6.11.Final]
@@ -482,20 +482,20 @@ Hibernate: create table tb_user (created_on timestamp(6) with time zone, updated
 Hibernate: alter table if exists order_product add constraint FK8bu68rldjkfljnchrtrhmmrkc foreign key (product_id) references tb_product
 Hibernate: alter table if exists order_product add constraint FKc1hr3gkcmqc95fqpu9k97fq60 foreign key (order_id) references tb_order
 Hibernate: alter table if exists tb_order add constraint FK2p4n9ciui39792tk5qdpcxq1w foreign key (user_id) references tb_user
-2025-07-12T16:40:57.408+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-07-12T16:40:57.412+08:00  INFO 84835 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2025-07-12T16:40:57.448+08:00  WARN 84835 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-07-12T16:40:57.478+08:00 DEBUG 84835 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
-2025-07-12T16:40:57.517+08:00  INFO 84835 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2025-07-12T16:40:57.527+08:00  INFO 84835 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-07-12T16:40:57.527+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-07-12T16:40:57.528+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2025-07-12T16:40:57.532+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.271 seconds (process running for 4.984)
-2025-07-12T16:40:57.536+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/e4ebd0ab-c157-4644-9f36-badc262d7776/active
-2025-07-12T16:40:57.536+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/e4ebd0ab-c157-4644-9f36-badc262d7776/active
-2025-07-12T16:40:57.541+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:48.787+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:48.793+08:00  INFO 96426 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-12T17:33:48.843+08:00  WARN 96426 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T17:33:48.883+08:00 DEBUG 96426 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-07-12T17:33:48.930+08:00  INFO 96426 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-12T17:33:48.941+08:00  INFO 96426 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T17:33:48.941+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T17:33:48.942+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-12T17:33:48.947+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.39 seconds (process running for 5.525)
+2025-07-12T17:33:48.950+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/3f93d240-73b9-4bf7-9d90-cdc7361c378e/active
+2025-07-12T17:33:48.950+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/3f93d240-73b9-4bf7-9d90-cdc7361c378e/active
+2025-07-12T17:33:48.954+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:57.541+08:00 ERROR 84835 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
+2025-07-12T17:33:48.954+08:00 ERROR 96426 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
 Hibernate: alter table if exists order_product drop constraint if exists FK8bu68rldjkfljnchrtrhmmrkc
 Hibernate: alter table if exists order_product drop constraint if exists FKc1hr3gkcmqc95fqpu9k97fq60
 Hibernate: alter table if exists tb_order drop constraint if exists FK2p4n9ciui39792tk5qdpcxq1w
@@ -503,12 +503,12 @@ Hibernate: drop table if exists order_product cascade
 Hibernate: drop table if exists tb_order cascade
 Hibernate: drop table if exists tb_product cascade
 Hibernate: drop table if exists tb_user cascade
-2025-07-12T16:40:57.542+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
-2025-07-12T16:40:57.576+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-07-12T17:33:48.955+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-07-12T17:33:48.986+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
 ]]></system-out>
   </testcase>
-  <testcase name="testActiveUserFail" classname="com.easymenu.user.UserControllerTest" time="0.011">
-    <system-out><![CDATA[2025-07-12T16:40:57.577+08:00  INFO 84835 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="testActiveUserFail" classname="com.easymenu.user.UserControllerTest" time="0.017">
+    <system-out><![CDATA[2025-07-12T17:33:48.987+08:00  INFO 96426 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -519,24 +519,24 @@ Hibernate: drop table if exists tb_user cascade
 
  :: Spring Boot ::                (v3.4.4)
 
-2025-07-12T16:40:57.586+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 84835 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
-2025-07-12T16:40:57.586+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
-2025-07-12T16:40:57.648+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-07-12T16:40:57.654+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
-2025-07-12T16:40:57.687+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
-2025-07-12T16:40:57.687+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection conn15: url=jdbc:h2:mem:testdb user=SA
-2025-07-12T16:40:57.687+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
-2025-07-12T16:40:57.688+08:00  INFO 84835 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
-2025-07-12T16:40:57.688+08:00  WARN 84835 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
-2025-07-12T16:40:57.689+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
-2025-07-12T16:40:57.690+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
-2025-07-12T16:40:57.690+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
-2025-07-12T16:40:57.696+08:00  INFO 84835 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-07-12T16:40:57.697+08:00  INFO 84835 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-07-12T16:40:57.699+08:00  INFO 84835 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-07-12T16:40:57.699+08:00  WARN 84835 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
-2025-07-12T16:40:57.699+08:00  WARN 84835 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-07-12T16:40:57.699+08:00  INFO 84835 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-07-12T17:33:48.995+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 96426 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
+2025-07-12T17:33:48.995+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
+2025-07-12T17:33:49.066+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T17:33:49.072+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 3 JPA repository interfaces.
+2025-07-12T17:33:49.109+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-07-12T17:33:49.110+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection conn17: url=jdbc:h2:mem:testdb user=SA
+2025-07-12T17:33:49.110+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-07-12T17:33:49.110+08:00  INFO 96426 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
+2025-07-12T17:33:49.111+08:00  WARN 96426 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
+2025-07-12T17:33:49.112+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
+2025-07-12T17:33:49.113+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
+2025-07-12T17:33:49.113+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-07-12T17:33:49.121+08:00  INFO 96426 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T17:33:49.122+08:00  INFO 96426 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T17:33:49.125+08:00  INFO 96426 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T17:33:49.125+08:00  WARN 96426 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2025-07-12T17:33:49.125+08:00  WARN 96426 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T17:33:49.126+08:00  INFO 96426 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-7)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -544,9 +544,9 @@ Hibernate: drop table if exists tb_user cascade
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-07-12T16:40:57.724+08:00  INFO 84835 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T17:33:49.148+08:00  INFO 96426 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:57.724+08:00  WARN 84835 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
+2025-07-12T17:33:49.149+08:00  WARN 96426 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.11.Final.jar:6.6.11.Final]
@@ -701,20 +701,20 @@ Hibernate: create table tb_user (created_on timestamp(6) with time zone, updated
 Hibernate: alter table if exists order_product add constraint FK8bu68rldjkfljnchrtrhmmrkc foreign key (product_id) references tb_product
 Hibernate: alter table if exists order_product add constraint FKc1hr3gkcmqc95fqpu9k97fq60 foreign key (order_id) references tb_order
 Hibernate: alter table if exists tb_order add constraint FK2p4n9ciui39792tk5qdpcxq1w foreign key (user_id) references tb_user
-2025-07-12T16:40:57.728+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-07-12T16:40:57.732+08:00  INFO 84835 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2025-07-12T16:40:57.765+08:00  WARN 84835 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-07-12T16:40:57.794+08:00 DEBUG 84835 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
-2025-07-12T16:40:57.832+08:00  INFO 84835 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2025-07-12T16:40:57.841+08:00  INFO 84835 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-07-12T16:40:57.841+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-07-12T16:40:57.841+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2025-07-12T16:40:57.845+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.268 seconds (process running for 5.297)
-2025-07-12T16:40:57.848+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/df0f6c10-a3d8-421e-985b-5a4718c105f2/deactivate
-2025-07-12T16:40:57.848+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/df0f6c10-a3d8-421e-985b-5a4718c105f2/deactivate
-2025-07-12T16:40:57.852+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:49.153+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:49.159+08:00  INFO 96426 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-12T17:33:49.198+08:00  WARN 96426 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T17:33:49.235+08:00 DEBUG 96426 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-07-12T17:33:49.286+08:00  INFO 96426 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-12T17:33:49.296+08:00  INFO 96426 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T17:33:49.296+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T17:33:49.297+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-07-12T17:33:49.302+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.315 seconds (process running for 5.88)
+2025-07-12T17:33:49.305+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/71f1dbbb-6bcd-474b-a541-47ca68d7690b/deactivate
+2025-07-12T17:33:49.305+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/71f1dbbb-6bcd-474b-a541-47ca68d7690b/deactivate
+2025-07-12T17:33:49.309+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:57.852+08:00 ERROR 84835 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
+2025-07-12T17:33:49.310+08:00 ERROR 96426 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
 Hibernate: alter table if exists order_product drop constraint if exists FK8bu68rldjkfljnchrtrhmmrkc
 Hibernate: alter table if exists order_product drop constraint if exists FKc1hr3gkcmqc95fqpu9k97fq60
 Hibernate: alter table if exists tb_order drop constraint if exists FK2p4n9ciui39792tk5qdpcxq1w
@@ -722,12 +722,12 @@ Hibernate: drop table if exists order_product cascade
 Hibernate: drop table if exists tb_order cascade
 Hibernate: drop table if exists tb_product cascade
 Hibernate: drop table if exists tb_user cascade
-2025-07-12T16:40:57.853+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
-2025-07-12T16:40:57.857+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2025-07-12T17:33:49.311+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-07-12T17:33:49.319+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
 ]]></system-out>
   </testcase>
-  <testcase name="testChangeUserStatusSuccess" classname="com.easymenu.user.UserControllerTest" time="0.021">
-    <system-out><![CDATA[2025-07-12T16:40:57.858+08:00  INFO 84835 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="testChangeUserStatusSuccess" classname="com.easymenu.user.UserControllerTest" time="0.024">
+    <system-out><![CDATA[2025-07-12T17:33:49.321+08:00  INFO 96426 --- [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -738,24 +738,24 @@ Hibernate: drop table if exists tb_user cascade
 
  :: Spring Boot ::                (v3.4.4)
 
-2025-07-12T16:40:57.865+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 84835 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
-2025-07-12T16:40:57.865+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
-2025-07-12T16:40:57.925+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-07-12T16:40:57.930+08:00  INFO 84835 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
-2025-07-12T16:40:57.962+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
-2025-07-12T16:40:57.962+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection conn19: url=jdbc:h2:mem:testdb user=SA
-2025-07-12T16:40:57.962+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
-2025-07-12T16:40:57.962+08:00  INFO 84835 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
-2025-07-12T16:40:57.963+08:00  WARN 84835 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
-2025-07-12T16:40:57.964+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
-2025-07-12T16:40:57.965+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
-2025-07-12T16:40:57.965+08:00  INFO 84835 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
-2025-07-12T16:40:57.970+08:00  INFO 84835 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-07-12T16:40:57.971+08:00  INFO 84835 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-07-12T16:40:57.973+08:00  INFO 84835 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-07-12T16:40:57.973+08:00  WARN 84835 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
-2025-07-12T16:40:57.973+08:00  WARN 84835 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-07-12T16:40:57.973+08:00  INFO 84835 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-07-12T17:33:49.329+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Starting UserControllerTest using Java 17.0.15 with PID 96426 (started by viniciusrodrigues in /Users/viniciusrodrigues/Documents/Projects/EasyMenu/backend)
+2025-07-12T17:33:49.329+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : The following 1 profile is active: "test"
+2025-07-12T17:33:49.393+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T17:33:49.398+08:00  INFO 96426 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
+2025-07-12T17:33:49.437+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-07-12T17:33:49.437+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection conn22: url=jdbc:h2:mem:testdb user=SA
+2025-07-12T17:33:49.437+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-07-12T17:33:49.438+08:00  INFO 96426 --- [           main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:testdb (H2 2.3)
+2025-07-12T17:33:49.438+08:00  WARN 96426 --- [           main] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
+2025-07-12T17:33:49.439+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.000s)
+2025-07-12T17:33:49.440+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
+2025-07-12T17:33:49.440+08:00  INFO 96426 --- [           main] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2025-07-12T17:33:49.447+08:00  INFO 96426 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T17:33:49.447+08:00  INFO 96426 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T17:33:49.449+08:00  INFO 96426 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T17:33:49.450+08:00  WARN 96426 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 2.3.232 version for [org.hibernate.dialect.PostgreSQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 12.0.0. Check the community dialects project for available legacy versions.
+2025-07-12T17:33:49.450+08:00  WARN 96426 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T17:33:49.450+08:00  INFO 96426 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-8)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -763,9 +763,9 @@ Hibernate: drop table if exists tb_user cascade
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-07-12T16:40:57.993+08:00  INFO 84835 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T17:33:49.471+08:00  INFO 96426 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:57.993+08:00  WARN 84835 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
+2025-07-12T17:33:49.471+08:00  WARN 96426 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "set client_min_messages = WARNING" via JDBC [Syntax error in SQL statement "set [*]client_min_messages = WARNING"; expected "@, AUTOCOMMIT, EXCLUSIVE, IGNORECASE, PASSWORD, SALT, MODE, DATABASE, COLLATION, CLUSTER, DATABASE_EVENT_LISTENER, ALLOW_LITERALS, DEFAULT_TABLE_TYPE, SCHEMA, CATALOG, SCHEMA_SEARCH_PATH, JAVA_OBJECT_SERIALIZER, IGNORE_CATALOGS, SESSION, TRANSACTION, TIME, NON_KEYWORDS, DEFAULT_NULL_ORDERING";]
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:94) ~[hibernate-core-6.6.11.Final.jar:6.6.11.Final]
@@ -920,20 +920,20 @@ Hibernate: create table tb_user (created_on timestamp(6) with time zone, updated
 Hibernate: alter table if exists order_product add constraint FK8bu68rldjkfljnchrtrhmmrkc foreign key (product_id) references tb_product
 Hibernate: alter table if exists order_product add constraint FKc1hr3gkcmqc95fqpu9k97fq60 foreign key (order_id) references tb_order
 Hibernate: alter table if exists tb_order add constraint FK2p4n9ciui39792tk5qdpcxq1w foreign key (user_id) references tb_user
-2025-07-12T16:40:57.996+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-07-12T16:40:58.000+08:00  INFO 84835 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
-2025-07-12T16:40:58.037+08:00  WARN 84835 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-07-12T16:40:58.065+08:00 DEBUG 84835 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
-2025-07-12T16:40:58.102+08:00  INFO 84835 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2025-07-12T16:40:58.111+08:00  INFO 84835 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-07-12T16:40:58.112+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-07-12T16:40:58.112+08:00  INFO 84835 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2025-07-12T16:40:58.116+08:00  INFO 84835 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.259 seconds (process running for 5.568)
-2025-07-12T16:40:58.119+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/815419b6-abc6-4936-bdb1-d4e4bf310d30/deactivate
-2025-07-12T16:40:58.119+08:00 DEBUG 84835 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/815419b6-abc6-4936-bdb1-d4e4bf310d30/deactivate
-2025-07-12T16:40:58.123+08:00  INFO 84835 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:49.475+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T17:33:49.480+08:00  INFO 96426 --- [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2025-07-12T17:33:49.517+08:00  WARN 96426 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T17:33:49.553+08:00 DEBUG 96426 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, SecurityFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-07-12T17:33:49.604+08:00  INFO 96426 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-07-12T17:33:49.615+08:00  INFO 96426 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T17:33:49.615+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T17:33:49.616+08:00  INFO 96426 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-12T17:33:49.621+08:00  INFO 96426 --- [           main] com.easymenu.user.UserControllerTest     : Started UserControllerTest in 0.3 seconds (process running for 6.199)
+2025-07-12T17:33:49.625+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Securing PUT /users/4fc43563-c4eb-48b0-9af8-37cd049a299c/deactivate
+2025-07-12T17:33:49.625+08:00 DEBUG 96426 --- [           main] o.s.security.web.FilterChainProxy        : Secured PUT /users/4fc43563-c4eb-48b0-9af8-37cd049a299c/deactivate
+2025-07-12T17:33:49.629+08:00  INFO 96426 --- [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 Hibernate: set client_min_messages = WARNING
-2025-07-12T16:40:58.123+08:00 ERROR 84835 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
+2025-07-12T17:33:49.629+08:00 ERROR 96426 --- [           main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000478: Unsuccessful: set client_min_messages = WARNING
 Hibernate: alter table if exists order_product drop constraint if exists FK8bu68rldjkfljnchrtrhmmrkc
 Hibernate: alter table if exists order_product drop constraint if exists FKc1hr3gkcmqc95fqpu9k97fq60
 Hibernate: alter table if exists tb_order drop constraint if exists FK2p4n9ciui39792tk5qdpcxq1w
@@ -941,8 +941,8 @@ Hibernate: drop table if exists order_product cascade
 Hibernate: drop table if exists tb_order cascade
 Hibernate: drop table if exists tb_product cascade
 Hibernate: drop table if exists tb_user cascade
-2025-07-12T16:40:58.124+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
-2025-07-12T16:40:58.138+08:00  INFO 84835 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2025-07-12T17:33:49.630+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2025-07-12T17:33:49.645+08:00  INFO 96426 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
 ]]></system-out>
   </testcase>
 </testsuite>

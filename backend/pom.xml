@@ -11,9 +11,9 @@
 	</parent>
 
 	<artifactId>easymenu-backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>EasyMenu</name>
-	<description>EasyMenu</description>
+	<description>A RESTful API for managing products and orders in the food service industry</description>
 	<url/>
 
 	<licenses>
