@@ -18,3 +18,4 @@ jobs:
           cache: maven
       - name: Build and Test
         run: mvn clean install -DskipTests=false
+        working-directory: backend
