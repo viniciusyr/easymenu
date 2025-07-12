@@ -13,6 +13,7 @@ public class JacksonConfiguration {
 
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jsonCustomizer() {
+        
         return builder -> {
             builder.modules(new JavaTimeModule(), new ProblemModule().withStackTraces(false), new ConstraintViolationProblemModule());
             builder.featuresToDisable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);

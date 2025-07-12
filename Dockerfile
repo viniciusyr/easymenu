@@ -2,7 +2,7 @@
 FROM maven:3.9.10-amazoncorretto-17-al2023 AS build
 WORKDIR /build
 
-COPY backend .
+COPY . .
 
 RUN mvn -pl backend clean package -DskipTests
 
