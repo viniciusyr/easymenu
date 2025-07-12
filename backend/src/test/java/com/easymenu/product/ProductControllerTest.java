@@ -48,6 +48,7 @@ class ProductControllerTest {
                 LocalDate.now(),
                 LocalDate.of(2026, 3, 25));
         ProductResponseDTO product = new ProductResponseDTO(UUID.randomUUID(), "Burger", new BigDecimal("25.50"));
+        
         when(productService.createProduct(any(ProductRecordDTO.class))).thenReturn(product);
 
         mockMvc.perform(post("/products")
