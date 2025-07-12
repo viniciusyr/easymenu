@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ chore/ci ]
+    branches: [ develop ]
 
 jobs:
   build:
