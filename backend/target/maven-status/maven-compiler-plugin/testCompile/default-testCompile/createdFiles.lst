@@ -1,0 +1,6 @@
+com/easymenu/product/ProductControllerTest.class
+com/easymenu/EasyMenuApplicationTests.class
+com/easymenu/authentication/AuthenticationControllerTest.class
+com/easymenu/order/OrderControllerTest.class
+com/easymenu/order/OrderRepositoryTest.class
+com/easymenu/user/UserControllerTest.class

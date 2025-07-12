@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.easymenu.authentication.AuthenticationControllerTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.253 s -- in com.easymenu.authentication.AuthenticationControllerTest

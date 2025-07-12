@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.easymenu.product.ProductControllerTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.552 s -- in com.easymenu.product.ProductControllerTest
