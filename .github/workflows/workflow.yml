@@ -18,3 +18,9 @@ jobs:
           cache: maven
       - name: Build and Test
         run: mvn clean test -Dspring.profiles.active=test
+      - name: Dockerhub login
+        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+      - name: Build Docker image
+        run: docker build -t viniciusyr/easymenuapi:latest ./backend
+      - name: Push Docker image
+        run: docker push viniciusyr/easymenuapi:latest
