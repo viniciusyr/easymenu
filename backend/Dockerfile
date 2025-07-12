@@ -4,13 +4,13 @@ WORKDIR /build
 
 COPY . .
 
-RUN mvn clean package -DskipTests
+RUN mvn -pl backend clean package -DskipTests
 
 #run
 FROM amazoncorretto:17.0.15
 WORKDIR /app
 
-COPY --from=build ./build/target/*.jar ./easymenuapi.jar
+COPY --from=build /build/backend/target/*.jar easymenuapi.jar
 
 EXPOSE 8080
 
