@@ -1,0 +1,31 @@
+name: CD - Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull image from Docker Hub
+        run: docker pull viniciusyr/easymenuapi:latest
+
+      - name: Stop and Remove Old Container
+        run: |
+          docker stop easymenuapi || true
+          docker rm easymenuapi || true
+
+      - name: Run Docker Container
+        run: |
+          docker run -d \
+            --name easymenuapi \
+            -e DBPROD_URL=${{ secrets.DBPROD_URL }} \
+            -e DBPROD_USERNAME=${{ secrets.DBPROD_USERNAME }} \
+            -e DBPROD_PASSWORD=${{ secrets.DBPROD_PASSWORD }} \
+            -e JWT_SECRET=${{ secrets.JWT_SECRET }} \
+            -e SPRING_PROFILES_ACTIVE=prod \
+            -p 8080:8080 \
+            --restart always \
+            viniciusyr/easymenuapi:latest
