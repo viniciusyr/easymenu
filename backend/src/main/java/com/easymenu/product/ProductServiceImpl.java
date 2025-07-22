@@ -1,7 +1,12 @@
 package com.easymenu.product;
 
 import com.easymenu.product.exceptions.ProductException;
+import com.easymenu.redis.RedisService;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cache;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +15,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,14 +27,19 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductFactory productFactory;
     private final ProductRepository productRepository;
+    private final RedisService regisService;
+    private static final String PRODUCT_CACHE_KEY = "all-products";
 
-    public ProductServiceImpl(ProductFactory productFactory, ProductRepository productRepository) {
+    public ProductServiceImpl(ProductFactory productFactory,
+                              ProductRepository productRepository,
+                              RedisService regisService) {
         this.productFactory = productFactory;
         this.productRepository = productRepository;
+        this.regisService = regisService;
     }
 
-
     @Override
+    @CachePut(value="PRODUCT_CACHE", key="#result.id")
     public ProductResponseDTO createProduct(ProductRecordDTO product) {
         if(product == null){
             throw new ProductException.ProductNotFoundException("ProductRecordDTO is null");
@@ -46,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @CachePut(value="PRODUCT_CACHE", key="#result.id")
     public ProductResponseDTO updateProduct(ProductUpdateDTO product, UUID id) {
         ProductModel existingProduct = productRepository.findById(id)
                 .orElseThrow(() -> new ProductException.ProductNotFoundException("Product not found to update! ID: " + id));
@@ -72,6 +84,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @CacheEvict(value="PRODUCT_CACHE", key="#productId")
     public void deleteProduct(UUID id) {
         if(!productRepository.existsById(id)){
             throw new ProductException.ProductNotFoundException("Product not found to delete");
@@ -84,22 +97,28 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value="PRODUCT_CACHE", key ="#id")
     public ProductResponseDTO findProductById(UUID id) {
-        return productRepository.findById(id).map(product -> {
-            log.info("Product found: {}", product.getName());
-            return productFactory.toResponseDto(product);
-        })
+        return productRepository.findById(id).map(productFactory::toResponseDto)
                 .orElseThrow(() -> new ProductException.ProductNotFoundException("Product not found!"));
     }
 
     @Override
     public List<ProductResponseDTO> findAllProduct() {
-        return productRepository.findAll().stream()
-                .map(productFactory::toResponseDto)
-                .toList();
+        return regisService.getList(PRODUCT_CACHE_KEY, ProductResponseDTO.class)
+                .orElseGet(() -> {
+                    List<ProductResponseDTO> products = productRepository.findAll()
+                            .stream()
+                            .map(productFactory::toResponseDto)
+                            .toList();
+                    regisService.set(PRODUCT_CACHE_KEY, products, Duration.ofMinutes(10));
+                    return products;
+                });
     }
 
     @Override
+    @Cacheable(value="PRODUCT_CACHE",
+            key="'search:' + #searchDTO.name() + ':' + #pageable.pageNumber + ':' + #pageable.pageSize")
     public Page<ProductResponseDTO> findByCriteria(ProductSearchDTO searchDTO, Pageable pageable) {
         if (searchDTO == null){
             throw new ProductException.InvalidFilterException("SearchDTO is null") ;

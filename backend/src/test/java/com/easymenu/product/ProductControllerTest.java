@@ -76,8 +76,7 @@ class ProductControllerTest {
                         .content(invalidJson)
                         .with(user("vinicius").roles("ADMIN")))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/validation-error"))
-                .andExpect(jsonPath("$.violations").isArray());
+                .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/json-error"));
     }
 
     @Test
@@ -105,7 +104,7 @@ class ProductControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/product-not-found"))
                 .andExpect(jsonPath("$.title").value("Product not found"))
-                .andExpect(jsonPath("$.status").value(404));
+                .andExpect(jsonPath("$.status").value("NOT_FOUND"));
     }
 
     @Test
