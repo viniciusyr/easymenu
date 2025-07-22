@@ -89,9 +89,9 @@ class AuthenticationControllerTest {
                         .content(invalidJson))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/validation-error"))
-                .andExpect(jsonPath("$.title").value("Validation Failed"))
-                .andExpect(jsonPath("$.violations").isArray())
-                .andExpect(jsonPath("$.violations.length()").value(4));
+                .andExpect(jsonPath("$.title").value("Validation Error"))
+                .andExpect(jsonPath("$.violations.violations").isArray())
+                .andExpect(jsonPath("$.violations.violations.length()").value(4));
     }
 
     @Test
@@ -108,7 +108,7 @@ class AuthenticationControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/email-already-exists"))
                 .andExpect(jsonPath("$.title").value("Email already exists"))
-                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
                 .andExpect(jsonPath("$.detail").value("Email already exists"));
     }
 
@@ -126,7 +126,7 @@ class AuthenticationControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/user-not-found"))
                 .andExpect(jsonPath("$.title").value("User not found"))
-                .andExpect(jsonPath("$.status").value(404))
+                .andExpect(jsonPath("$.status").value("NOT_FOUND"))
                 .andExpect(jsonPath("$.detail").value("Username not found"));
     }
 }

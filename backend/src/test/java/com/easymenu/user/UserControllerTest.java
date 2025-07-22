@@ -59,7 +59,7 @@ class UserControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/wrong-user-status"))
                 .andExpect(jsonPath("$.title").value("Wrong user status"))
-                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
                 .andExpect(jsonPath("$.detail").value("The user's status is already ACTIVE"));
 
     }
@@ -76,7 +76,7 @@ class UserControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.type").value("https://easymenu.app/problems/wrong-user-status"))
                 .andExpect(jsonPath("$.title").value("Wrong user status"))
-                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.status").value("BAD_REQUEST"))
                 .andExpect(jsonPath("$.detail").value("The user's status is already INACTIVE"));
     }
 

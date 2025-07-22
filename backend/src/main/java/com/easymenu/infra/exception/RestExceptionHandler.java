@@ -23,80 +23,84 @@ import java.util.List;
 public class RestExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Problem> handleValidation(MethodArgumentNotValidException ex) {
+    public ResponseEntity<HandlerFactory> handleValidation(MethodArgumentNotValidException ex) {
         List<Violation> violations = ex.getBindingResult().getFieldErrors().stream()
                 .map(error -> new Violation(error.getField(), error.getDefaultMessage()))
                 .toList();
 
-        CustomConstraintViolationProblem problem =
-                new CustomConstraintViolationProblem("One or more fields are invalid.", violations);
+        HandlerFactory problem = HandlerFactory.builder()
+                .withType(URI.create("https://easymenu.app/problems/validation-error"))
+                .withTitle("Validation Error")
+                .withStatus(HttpStatus.BAD_REQUEST)
+                .withDetail("One or more fields are invalid.")
+                .withTime(Instant.now())
+                .with("violations", violations)
+                .build();
 
         return ResponseEntity.badRequest().body(problem);
     }
 
     @ExceptionHandler(GlobalException.class)
-    public ResponseEntity<Problem> handleGlobal(GlobalException ex) {
-        Problem problem = Problem.builder()
+    public ResponseEntity<HandlerFactory> handleGlobal(GlobalException ex) {
+        HandlerFactory problem = HandlerFactory.builder()
                 .withType(URI.create("https://easymenu.app/problems/" + ex.getType()))
                 .withTitle(ex.getTitle())
                 .withStatus(ex.getStatus())
                 .withDetail(ex.getMessage())
-                .with("timestamp", Instant.now())
+                .withTime(Instant.now())
                 .build();
 
-        return ResponseEntity
-                .status(ex.getStatus().getStatusCode())
-                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
+        return ResponseEntity.status(ex.getStatus())
+                .contentType(MediaType.APPLICATION_JSON)
                 .body(problem);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-       public ResponseEntity<Problem> handleNotReadable(HttpMessageNotReadableException exception) {
+    public ResponseEntity<HandlerFactory> handleNotReadable(HttpMessageNotReadableException exception) {
         Throwable rootCause = ExceptionUtils.getRootCause(exception);
 
-        if(rootCause instanceof InvalidFormatException invalidFormat){
+        if (rootCause instanceof InvalidFormatException invalidFormat) {
             String field = extractField(invalidFormat.getPath());
             String value = String.valueOf(invalidFormat.getValue());
 
-            Problem problem = Problem.builder().
-                    withType(URI.create("https://easymenu.app/problems/invalid-format"))
+            HandlerFactory problem = HandlerFactory.builder()
+                    .withType(URI.create("https://easymenu.app/problems/invalid-format"))
                     .withTitle("Invalid Format")
-                    .withStatus(Status.BAD_REQUEST)
-                    .withDetail("Wrong type value for the field:" + field)
-                    .with("timestamp", Instant.now())
+                    .withStatus(HttpStatus.BAD_REQUEST)
+                    .withDetail("Wrong type value for the field: " + field)
+                    .withTime(Instant.now())
                     .with("Invalid value", value)
                     .build();
 
             return ResponseEntity.badRequest().body(problem);
         }
 
-        Problem genericProblem = Problem.builder().
-                withType(URI.create("https://easymenu.app/problems/json-error"))
+        HandlerFactory genericProblem = HandlerFactory.builder()
+                .withType(URI.create("https://easymenu.app/problems/json-error"))
                 .withTitle("Error JSON")
-                .withStatus(Status.BAD_REQUEST)
-                .withDetail("The submitted JSON could not be processed")
+                .withStatus(HttpStatus.BAD_REQUEST)
+                .withDetail("The submitted request could not be processed")
+                .withTime(Instant.now())
                 .build();
 
         return ResponseEntity.badRequest().body(genericProblem);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Problem> handleGeneric(Exception ex) {
-        Problem problem = Problem.builder()
+    public ResponseEntity<HandlerFactory> handleGeneric(Exception ex) {
+        HandlerFactory problem = HandlerFactory.builder()
                 .withType(URI.create("https://easymenu.app/problems/internal-error"))
                 .withTitle("Internal Error")
-                .withStatus(Status.INTERNAL_SERVER_ERROR)
+                .withStatus(HttpStatus.INTERNAL_SERVER_ERROR)
                 .withDetail("An unexpected error occurred.")
-                .with("timestamp", Instant.now())
+                .withTime(Instant.now())
                 .build();
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .contentType(MediaType.APPLICATION_PROBLEM_JSON)
                 .body(problem);
     }
 
     private String extractField(List<JsonMappingException.Reference> path) {
-        return path.isEmpty() ? "unknown" : path.get(path.size() -1).getFieldName();
+        return path.isEmpty() ? "unknown" : path.get(path.size() - 1).getFieldName();
     }
-
 }
