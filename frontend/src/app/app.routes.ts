@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
-import { LoginComponent } from './components/login/login';
+import { Home } from './public-site/components/home/home';
+import { LoginComponent } from './public-site/components/login/login';
+import { DashHomeComponent } from './dashboard/components/home/home';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'dashboard.home',
         pathMatch: 'full'
     },
     {
@@ -15,6 +16,10 @@ export const routes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'dashboard.home',
+        component: DashHomeComponent
     }
 ];
 
