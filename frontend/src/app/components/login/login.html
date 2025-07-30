@@ -1,0 +1,39 @@
+<!-- login.component.html -->
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+
+  <div class="py-10">
+    <img src="/easymenu-black-logo.png" alt="logo">
+  </div>
+  <div class="bg-white shadow-xl rounded-2xl p-10 max-w-md w-full text-center">
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">Bem-vindo</h1>
+    <p class="text-gray-500 mb-6">Faça login para gerenciar seu restaurante</p>
+
+    <!-- Botão Google -->
+    <button class="flex items-center justify-center w-full gap-2 py-3 px-5 border border-gray-300 rounded-lg mb-4 hover:bg-gray-50 transition"
+            (click)="loginWithGoogle()">
+      <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" />
+      <span>Continuar com Google</span>
+    </button>
+
+    <!-- Botão Facebook -->
+    <button class="flex items-center justify-center w-full gap-2 py-3 px-5 border border-gray-300 rounded-lg mb-4 hover:bg-gray-50 transition"
+            (click)="loginWithFacebook()">
+      <img src="https://www.svgrepo.com/show/448224/facebook.svg" class="w-5 h-5" />
+      <span>Continuar com Facebook</span>
+    </button>
+
+    <div class="my-4 text-gray-500 text-sm">ou entre com seu e-mail</div>
+
+    <!-- Formulário -->
+    <form (ngSubmit)="loginWithEmail()" class="flex flex-col gap-4">
+      <input type="email" placeholder="Email" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"  name="email" />
+      <input type="password" placeholder="Senha" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2"  name="password" />
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-semibold">Entrar</button>
+    </form>
+
+    <p class="mt-6 text-sm text-gray-600">
+      Não tem uma conta?
+      <a href="/register" class="text-blue-600 hover:underline">Cadastre-se</a>
+    </p>
+  </div>
+</div>

@@ -3,10 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { Header } from '../header/header';
 import { Hero } from '../hero/hero'
 import { Solution } from '../solution/solution'
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   standalone: true,
-  imports: [FormsModule, Header, Hero, Solution],
+  imports: [FormsModule, Header, Hero, Solution, RouterModule],
   selector: 'app-home',
   templateUrl: './home.html',
   styleUrl: './home.css'

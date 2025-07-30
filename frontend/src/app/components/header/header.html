@@ -1,18 +1,17 @@
-
-
 <header class="fixed top-2 w-full z-50 bg-transparent text-white font-sans">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-4 py-5 text-base" #navbar>
     <!-- Logo -->
-    <a href="#" class="flex items-center space-x-8">
-      <img src="/easymenu-black-logo.png" alt="Logo" class="h-6 w-auto">
+    <div class="flex items-center space-x-8">
+      <a href="#">
+        <img src="/easymenu-black-logo.png" alt="Logo" class="h-6 w-auto">
+      </a>
       <a href="#" class="px-4 py-2 hover:bg-gray-100 rounded-full hover:text-gray-700 text-gray-600 transition">Features</a>
       <a href="#" class="px-4 py-2 hover:bg-gray-100 rounded-full hover:text-gray-700 text-gray-600 transition">Planos</a>
-    </a>
+    </div>
 
     <!-- Right side -->
-    <div class="flex items-center space-x-5">
-      
-      <a href="#" class="px-4 py-2 hover:bg-gray-100 rounded-full hover:text-gray-700 text-gray-600 transition">Entrar</a>
+     <div class="flex items-center space-x-5">
+      <a routerLink="/login" class="px-4 py-2 hover:bg-gray-100 rounded-full hover:text-gray-700 text-gray-600 transition">Entrar</a>
       <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full font-medium hover:bg-black hover:text-white transition duration-75">
         Comece agora
       </a>
