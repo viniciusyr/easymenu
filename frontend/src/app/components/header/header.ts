@@ -1,11 +1,12 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, signal, effect, viewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { scroll, animate } from 'motion';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NgOptimizedImage],
+  imports: [NgOptimizedImage, RouterModule],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
