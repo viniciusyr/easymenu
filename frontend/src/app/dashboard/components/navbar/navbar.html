@@ -1,1 +1,134 @@
-<p>navbar works!</p>
+<div class="grid grid-cols-[290px_1fr] h-screen ">
+  <aside class="bg-white text-black p-4 space-y-1 border-1 border-gray-100">
+    <div class="flex items-center grap-4 h-20">
+      <img src="/easymenu-black-logo.png" alt="easymenu-black-logo" class="w-50">
+      <span>Admin</span>
+    </div>
+    <div class="w-full bg-white text-gray-600 h-screen p-4 space-y-2">
+      <h3 class="text-gray-400 text-sm space-x-1">MENU</h3>
+      <div>
+        <button (click)="toggleSection('dashboard')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/dashboard-icon.png" alt="dash-icon" class="w-6 h-6" />
+            Dashboard
+          </span>
+          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
+            'rotate-180': openSection !== 'dashboard',
+            'rotate-0': openSection === 'dashboard'
+          }" />
+        </button>
+        <div [ngClass]="{
+        'max-h-40': openSection === 'dashboard',
+        'max-h-0': openSection !== 'dashboard'
+      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="toggleSection('orders')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/orders-icon.png" alt="orders-icon" class="w-6 h-6" />
+            Orders
+          </span>
+          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
+            'rotate-180': openSection !== 'orders',
+            'rotate-0': openSection === 'orders'
+          }" />
+        </button>
+        <div [ngClass]="{
+        'max-h-40': openSection === 'orders',
+        'max-h-0': openSection !== 'orders'
+      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
+        </div>
+      </div>
+      <div>
+        <button (click)="toggleSection('products')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/products-icon.png" alt="products-icon" class="w-6 h-6" />
+            Products
+          </span>
+          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
+            'rotate-180': openSection !== 'products',
+            'rotate-0': openSection === 'products'
+          }" />
+        </button>
+        <div [ngClass]="{
+        'max-h-40': openSection === 'products',
+        'max-h-0': openSection !== 'products'
+      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
+        </div>
+      </div>
+      <h3 class="text-gray-400 text-sm">SUPPORT</h3>
+            <div>
+        <button (click)="toggleSection('chat')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/chat-icon.png" alt="chat-icon" class="w-6 h-6" />
+            Chat
+          </span>
+          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
+            'rotate-180': openSection !== 'dashboard',
+            'rotate-0': openSection === 'dashboard'
+          }" />
+        </button>
+        <div [ngClass]="{
+        'max-h-40': openSection === 'chat',
+        'max-h-0': openSection !== 'chat'
+      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
+        </div>
+      </div>
+            <div>
+        <button (click)="toggleSection('email')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/email-icon.png" alt="dash-icon" class="w-6 h-6" />
+            Email Ticket
+          </span>
+          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
+            'rotate-180': openSection !== 'dashboard',
+            'rotate-0': openSection === 'dashboard'
+          }" />
+        </button>
+        <div [ngClass]="{
+        'max-h-40': openSection === 'email',
+        'max-h-0': openSection !== 'email'
+      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
+          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navbar -->
+
+  <main class="bg-white">
+    <div class="grid grid-cols-3">
+      <div class="h-20 col-span-full w-screen flex justify-between items-center">
+        <div class="w-full">
+          <button class="border-1 rounded-md border-gray-200 m-3 py-2 px-4 hover:bg-blue-100">
+            <img src="/dashboard-icons/hide-sidemenu-icon.png" alt="" class="w-6 h-6">
+          </button>
+          Welcome, 
+        </div>
+      </div>
+      <div class="bg-yellow-100 col-span-full grid grid-cols-12 gap-4">
+        <div class="bg-blue-300 col-span-7">Numeros</div>
+        <div class="bg-blue-300 col-span-5">Metricas</div>
+        <div class="bg-blue-300 col-span-12">Estatisicas</div>
+        <div class="bg-blue-300 col-span-12">Ordens Recentes</div>
+      </div>
+    </div>
+  </main>
+</div>
