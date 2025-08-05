@@ -1,10 +1,14 @@
 package com.easymenu.user;
 
+import com.easymenu.redis.RedisService;
 import com.easymenu.user.enums.UserStatus;
 import com.easymenu.user.exceptions.UserException;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cache;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.jpa.domain.Specification;
@@ -15,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,19 +31,22 @@ public class UserServiceImpl implements UserService {
 
     private final UserFactory userFactory;
     private final UserRepository userRepository;
+    private final RedisService redisService;
+    private final String USER_CACHE_KEY = "USER_CACHE::";
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserFactory userFactory, UserRepository userRepository) {
+    public UserServiceImpl(UserFactory userFactory, UserRepository userRepository, RedisService redisService) {
         this.userFactory = userFactory;
         this.userRepository = userRepository;
+        this.redisService = redisService;
     }
 
     @Override
+    @CachePut(value = "USER_CACHE", key = "#result.id")
     public UserResponseDTO createUser(UserRecordDTO userRecordDto) {
-        System.out.println(">>> Entrou no UserService real");
         if (userRepository.existsByEmail(userRecordDto.email())) {
             throw new UserException.EmailAlreadyExistsException("Email already exists");
         }
@@ -59,13 +67,13 @@ public class UserServiceImpl implements UserService {
         );
 
         userRepository.save(newUser);
-
         log.info("User created successfully: {}", newUser.getEmail());
 
         return userFactory.toResponseDto(newUser);
     }
 
     @Override
+    @CachePut(value="USER_CACHE", key = "#result.id")
     public UserResponseDTO updateUser(UserUpdateDTO userUpdateDto, UUID id) {
 
         UserModel existingUser = userRepository.findById(id)
@@ -143,29 +151,44 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO getOneUser(UUID id) {
-        return userRepository.findById(id)
-                .map(user -> {
-                    log.info("User found: {}", user.getEmail());
-                    return userFactory.toResponseDto(user);
-                })
-                .orElseThrow(() -> new UserException.UserNotFoundException("User not found: " + id));
+        String cacheKey = USER_CACHE_KEY + id;
+        return redisService.get(cacheKey, UserResponseDTO.class)
+                .orElseGet(() -> {
+                    UserResponseDTO user = userRepository.findById(id)
+                            .map(userFactory::toResponseDto)
+                            .orElseThrow(() -> new UserException.UserNotFoundException("User not found by id" + id));
+                    redisService.set(cacheKey, user, Duration.ofMinutes(10));
+                    return user;
+                });
     }
 
     @Override
     public UserDetails findByName(String name) {
-        UserModel user = userRepository.findByName(name)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + name));
+        String cacheKey = USER_CACHE_KEY + name;
+        return redisService.get(cacheKey, UserModel.class)
+                .orElseGet(() -> {
+                    log.info("User found {}", name);
+                    UserModel user = userRepository.findByName(name)
+                            .orElseThrow(() -> new UserException.UserNotFoundException("User not found by name: "+ name));
+                    redisService.set(cacheKey, user, Duration.ofMinutes(10));
+                    return user;
+                });
 
-        log.info(">>> User found:{}", user.getName());
-        log.info(">>> Password in DB:{}", user.getPassword());
 
-        return user;
     }
 
     @Override
     public List<UserResponseDTO> getUsers() {
-        return userRepository.findAll().stream()
-                .map(userFactory::toResponseDto).toList();
+        return redisService.getList(USER_CACHE_KEY, UserResponseDTO.class)
+                        .orElseGet(() -> {
+                            List<UserResponseDTO> users = userRepository.findAll()
+                                    .stream()
+                                    .map(userFactory::toResponseDto).
+                                    toList();
+                            redisService.set(USER_CACHE_KEY, users, Duration.ofMinutes(10));
+                            return users;
+                        });
+
     }
 
     @Override
@@ -208,8 +231,12 @@ public class UserServiceImpl implements UserService {
             spec = spec.and(UserSpecs.updatedOn(userSearchDTO.updatedOn()));
         }
 
-        List<UserModel> result = userRepository.findAll(spec);
+        Page<UserModel> pageResult = userRepository.findAll(spec, pageable);
 
-        return new PageImpl<>(new ArrayList<>(result.stream().map(userFactory::toResponseDto).toList()));
+        List<UserResponseDTO> responseList = pageResult.getContent().stream()
+                .map(userFactory::toResponseDto)
+                .toList();
+
+        return new PageImpl<>(responseList, pageable, pageResult.getTotalElements());
     }
 }

@@ -2,11 +2,15 @@ package com.easymenu.order;
 
 import com.easymenu.order.exceptions.OrderException;
 import com.easymenu.product.ProductModel;
+import com.easymenu.redis.RedisService;
 import com.easymenu.user.UserModel;
 import com.easymenu.product.ProductRepository;
 import com.easymenu.user.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.annotations.Cache;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.jpa.domain.Specification;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -26,20 +31,24 @@ public class OrderServiceImpl implements OrderService {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final OrderFactory orderFactory;
+    private final RedisService redisService;
+    private final String ORDER_CACHE_KEY = "ORDER_CACHE::";
 
     @Autowired
     public OrderServiceImpl(OrderRepository orderRepository,
                             UserRepository userRepository,
                             ProductRepository productRepository,
-                            OrderFactory orderFactory) {
+                            OrderFactory orderFactory, RedisService redisService) {
         this.orderRepository = orderRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
         this.orderFactory = orderFactory;
+        this.redisService = redisService;
     }
 
 
     @Override
+    @CachePut(value = "ORDER_PRODUCT", key="#result.id")
     public OrderResponseDTO createOrder(OrderRecordDTO orderDto) {
 
         if(orderDto == null){
@@ -75,6 +84,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @CachePut(value="ORDER_CACHE", key="#result.id")
     public OrderResponseDTO updateOrder(OrderUpdateDTO orderDto, UUID orderId) {
         OrderModel existingOrder = orderRepository.findById(orderId)
                 .orElseThrow(() -> new OrderException.UpdateNotFoundException("Order not found!"));
@@ -90,22 +100,30 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderResponseDTO getOrderById(UUID orderId) {
-        return orderRepository.findById(orderId)
-                .map(order -> {
-                    log.info("Order found by ID: {}", order.getOrderNumber());
-                    return orderFactory.toResponseDto(order);
-                })
-                .orElseThrow(() -> new OrderException.OrderNotFoundException("Order not found by ID: " + orderId));
+        String cacheKey = ORDER_CACHE_KEY + orderId;
+        return redisService.get(cacheKey, OrderResponseDTO.class)
+                .orElseGet(() -> {
+                    OrderResponseDTO order = orderRepository.findById(orderId)
+                            .map(orderFactory::toResponseDto)
+                            .orElseThrow(() -> new OrderException.OrderNotFoundException("Order not found: " + orderId));
+                    redisService.set(cacheKey, order, Duration.ofMinutes(10));
+                    return order;
+
+                });
     }
 
 
     @Override
     public List<OrderResponseDTO> getAllOrders() {
-        List<OrderModel> orders = orderRepository.findAll();
-        log.info("Total Orders found: {}", orders.size());
-        return orders.stream()
-                .map(orderFactory::toResponseDto)
-                .toList();
+        return redisService.getList(ORDER_CACHE_KEY, OrderResponseDTO.class)
+                .orElseGet(() -> {
+                    List<OrderResponseDTO> orders = orderRepository.findAll()
+                            .stream().map(orderFactory::toResponseDto).toList();
+
+                    redisService.set(ORDER_CACHE_KEY, orders, Duration.ofMinutes(10));
+                    log.info("Total Orders found: {}", orders.size());
+                    return orders;
+                });
     }
 
     @Override

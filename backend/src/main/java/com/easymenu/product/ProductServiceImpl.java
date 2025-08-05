@@ -27,15 +27,15 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductFactory productFactory;
     private final ProductRepository productRepository;
-    private final RedisService regisService;
-    private static final String PRODUCT_CACHE_KEY = "all-products";
+    private final RedisService redisService;
+    private final String PRODUCT_CACHE_KEY = "PRODUCT_CACHE::";
 
     public ProductServiceImpl(ProductFactory productFactory,
                               ProductRepository productRepository,
-                              RedisService regisService) {
+                              RedisService redisService) {
         this.productFactory = productFactory;
         this.productRepository = productRepository;
-        this.regisService = regisService;
+        this.redisService = redisService;
     }
 
     @Override
@@ -105,13 +105,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponseDTO> findAllProduct() {
-        return regisService.getList(PRODUCT_CACHE_KEY, ProductResponseDTO.class)
+        return redisService.getList(PRODUCT_CACHE_KEY, ProductResponseDTO.class)
                 .orElseGet(() -> {
                     List<ProductResponseDTO> products = productRepository.findAll()
                             .stream()
                             .map(productFactory::toResponseDto)
                             .toList();
-                    regisService.set(PRODUCT_CACHE_KEY, products, Duration.ofMinutes(10));
+                    redisService.set(PRODUCT_CACHE_KEY, products, Duration.ofMinutes(10));
                     return products;
                 });
     }
@@ -123,7 +123,6 @@ public class ProductServiceImpl implements ProductService {
         if (searchDTO == null){
             throw new ProductException.InvalidFilterException("SearchDTO is null") ;
         }
-
         Specification<ProductModel> spec = Specification.where(null);
 
         if(searchDTO.id() != null){
