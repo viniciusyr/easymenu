@@ -8,6 +8,13 @@ spring:
     cache:
         type: none
 
+    redis:
+        repositories:
+            enabled: false
+
+    flyway:
+        enabled: false
+
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
