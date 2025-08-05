@@ -17,6 +17,14 @@ jobs:
           docker stop easymenuapi || true
           docker rm easymenuapi || true
 
+      - name: Run Redis Container
+        run: |
+          docker run -d \
+            --name redis \
+            -p 6379:6379 \
+            --restart always \
+            redis:latest
+
       - name: Run Docker Container
         run: |
           docker run -d \
