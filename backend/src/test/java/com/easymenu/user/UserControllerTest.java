@@ -1,5 +1,6 @@
 package com.easymenu.user;
 
+import com.easymenu.redis.RedisService;
 import com.easymenu.user.exceptions.UserException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,9 @@ class UserControllerTest {
 
     @MockitoBean
     private UserService userService;
+
+    @MockitoBean
+    private RedisService redisService;
 
     @Test
     public void testChangeUserStatusSuccess() throws Exception {

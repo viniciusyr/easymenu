@@ -7,6 +7,9 @@ spring:
 
     cache:
         type: none
+    redis:
+        repositories:
+            enabled: false
 
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect

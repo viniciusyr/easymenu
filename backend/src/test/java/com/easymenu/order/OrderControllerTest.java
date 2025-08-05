@@ -1,6 +1,7 @@
 package com.easymenu.order;
 
 import com.easymenu.order.enums.OrderStatus;
+import com.easymenu.redis.RedisService;
 import com.easymenu.user.UserFactory;
 import com.easymenu.user.UserModel;
 import com.easymenu.user.enums.UserRole;
@@ -40,6 +41,9 @@ class OrderControllerTest {
 
     @MockitoBean
     private OrderService orderService;
+
+    @MockitoBean
+    private RedisService redisService;
 
     @Autowired
     ObjectMapper objectMapper;
