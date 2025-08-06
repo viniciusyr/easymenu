@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserServiceImpl(UserFactory userFactory, UserRepository userRepository, RedisService redisService) {
         this.userFactory = userFactory;
-        this.userRepository = userRepository;
+        this.uswserRepository = userRepository;
         this.redisService = redisService;
     }
 
