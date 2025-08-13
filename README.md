@@ -341,7 +341,8 @@ Here you can find the main routes of the API and examples of requests and respon
 | Version                       | Description                                              |
 |--------------------------------|-----------------------------------------------------------|
 | <kbd>v1.0</kbd>    | Initial release: CRUD, JWT, Swagger, CI/CD |
-| <kbd>v1.1</kbd>    | Planned: Add Redis caching |
+| <kbd>v1.1</kbd>    |  Redis caching |
+
 
 <h2 id="contribute">📫 Contribute</h2>
 <p>I leave here my invitation for you who want to contribute to my project, or if you are a student looking for a project to study by making commits and fixing bugs, know that you are more than welcome to participate. Below I leave some articles that can help you in this process as it helped me.
