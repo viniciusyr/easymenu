@@ -4,7 +4,7 @@
 [AWS_BADGE]:https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white
 
 
-<h1 align="center" style="font-weight: bold;"> 💻 EasyMenu API </h1>
+<h1 align="center" style="font-weight: bold;"><a href="https://github.com/viniciusyr/easymenu"> 💻 EasyMenu API </a></h1>
 
 ![AWS][AWS_BADGE]
 ![spring][SPRING_BADGE]
