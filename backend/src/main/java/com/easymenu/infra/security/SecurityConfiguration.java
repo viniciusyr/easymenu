@@ -31,6 +31,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.DELETE, "/products").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/orders/search").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/orders").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/payment").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/v2/api-docs/**",
                                 "/v3/api-docs/**",
                                 "/swagger-resources/**",

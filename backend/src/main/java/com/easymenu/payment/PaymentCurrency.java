@@ -1,4 +1,4 @@
-package com.easymenu.payment.gateway.stripe;
+package com.easymenu.payment;
 
 public enum PaymentCurrency {
     BRL("brl"),

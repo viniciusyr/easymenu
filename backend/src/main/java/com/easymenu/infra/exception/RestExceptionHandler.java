@@ -1,8 +1,11 @@
 package com.easymenu.infra.exception;
 
 import com.easymenu.authentication.exceptions.AuthenticationException;
+import com.easymenu.payment.exceptions.PaymentException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import com.stripe.exception.CardException;
+import com.stripe.exception.StripeException;
 import org.flywaydb.core.internal.util.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,7 +20,9 @@ import org.zalando.problem.violations.Violation;
 
 import java.net.URI;
 import java.time.Instant;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
@@ -56,8 +61,8 @@ public class RestExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<HandlerFactory> handleNotReadable(HttpMessageNotReadableException exception) {
-        Throwable rootCause = ExceptionUtils.getRootCause(exception);
+    public ResponseEntity<HandlerFactory> handleNotReadable(HttpMessageNotReadableException ex) {
+        Throwable rootCause = ExceptionUtils.getRootCause(ex);
 
         if (rootCause instanceof InvalidFormatException invalidFormat) {
             String field = extractField(invalidFormat.getPath());
@@ -98,6 +103,22 @@ public class RestExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(problem);
+    }
+
+    @ExceptionHandler(PaymentException.class)
+    public ResponseEntity<HandlerFactory> paymentHandler(PaymentException ex){
+
+        HandlerFactory problem = HandlerFactory.builder()
+                .withType(URI.create("https://easymenu.app/problems/payment-request-error"))
+                .withTitle(ex.getTitle())
+                .withStatus(ex.getStatus())
+                .withDetail(ex.getMessage())
+                .withTime(Instant.now())
+                .with("provider", ex.getProvider())
+                .with(ex.getDetails())
+                .build();
+
+        return ResponseEntity.status(ex.getStatus()).body(problem);
     }
 
     private String extractField(List<JsonMappingException.Reference> path) {
