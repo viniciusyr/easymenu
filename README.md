@@ -32,7 +32,7 @@
 - 📄 API docs via Swagger/OpenAPI
 - 🐳 Docker support
 - 🚀 CI/CD pipeline via GitHub Actions
-- ⚡ Future improvements: Redis cache
+- ⚡ Redis cache
 
 <h2 id="started">🚀 Getting started</h2>
 
