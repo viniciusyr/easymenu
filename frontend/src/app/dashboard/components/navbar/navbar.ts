@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -10,8 +10,14 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./navbar.css']
 })
 export class Navbar {
+  sidebarCollapsed = signal(false);
+  status: "Online" | "Offline" = 'Online';
 
-   openSection: string | null = null;
+  openSection: string | null = null;
+
+  toggleSidebar() {
+    this.sidebarCollapsed.update(v => !v);
+  }
 
   toggleSection(section: string) {
     this.openSection = this.openSection === section ? null : section;
