@@ -23,7 +23,6 @@ spring:
         default-page-size: 10
         max-page-size: 100
 
-
 logging:
   level:
     org.springframework.security: DEBUG

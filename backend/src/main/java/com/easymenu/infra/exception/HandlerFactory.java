@@ -18,7 +18,7 @@ public class HandlerFactory {
     private HttpStatus status;
     private String detail;
     private Instant timestamp;
-    private final Map<String, Object> violations = new LinkedHashMap<>();
+    private Map<String, Object> violations = new LinkedHashMap<>();
 
     public static HandlerFactoryBuilder builder() {
         return new HandlerFactoryBuilder();
@@ -58,6 +58,11 @@ public class HandlerFactory {
 
         public HandlerFactoryBuilder with(String key, Object value) {
             problem.violations.put(key, value);
+            return this;
+        }
+
+        public HandlerFactoryBuilder with(Map<String, Object> problems){
+            problem.violations = problems;
             return this;
         }
 

@@ -3,6 +3,7 @@ package com.easymenu.user;
 import com.easymenu.user.enums.UserStatus;
 import com.easymenu.user.exceptions.UserException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;

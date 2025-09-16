@@ -1,113 +1,183 @@
-<div class="grid grid-cols-[290px_1fr] h-screen ">
-  <aside class="bg-white text-black p-4 space-y-1 border-1 border-gray-100">
+<div class="grid h-full w-full transition-all"
+  [ngClass]="sidebarCollapsed() ? 'grid-cols-[80px_1fr]' : 'grid-cols-[290px_1fr]'">
+  <!-- Sidebar -->
+  <aside class="bg-white text-black p-4 space-y-1 border-r border-gray-200 transition-all duration-300">
+    <!-- Logo -->
     <div class="flex items-center grap-4 h-20">
-      <img src="/easymenu-black-logo.png" alt="easymenu-black-logo" class="w-50">
-      <span>Admin</span>
+      <img src="/easymenu-black-logo.png" alt="easymenu-black-logo" class="w-20 transition-all duration-300"
+      [ngClass]="{'w-20': sidebarCollapsed(), 'w-50': !sidebarCollapsed()}">
+      <span *ngIf="!sidebarCollapsed()" class="font-semibold pt-2">Admin</span>
     </div>
-    <div class="w-full bg-white text-gray-600 h-screen p-4 space-y-2">
-      <h3 class="text-gray-400 text-sm space-x-1">MENU</h3>
+
+    <!-- Menu -->
+    <div class="w-full bg-white text-gray-600 h-screen space-y-2">
+      <h3 *ngIf="!sidebarCollapsed()" class="text-gray-400 text-sm">MENU</h3>
+      <!-- Dashboard -->
       <div>
         <button (click)="toggleSection('dashboard')"
-          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
           <span class="flex items-center gap-4">
             <img src="/dashboard-icons/dashboard-icon.png" alt="dash-icon" class="w-6 h-6" />
-            Dashboard
+            <span *ngIf="!sidebarCollapsed()">Dashboard</span>
           </span>
-          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
-            'rotate-180': openSection !== 'dashboard',
-            'rotate-0': openSection === 'dashboard'
-          }" />
+          <img *ngIf="!sidebarCollapsed()" 
+            src="/dashboard-icons/arrow-up.png" 
+            class="w-4 h-4 transition-transform"
+            [ngClass]="openSection === 'dashboard' ? 'rotate-0' : 'rotate-180'"/>
         </button>
-        <div [ngClass]="{
-        'max-h-40': openSection === 'dashboard',
-        'max-h-0': openSection !== 'dashboard'
-      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
+        <div *ngIf="openSection === 'dashboard' && !sidebarCollapsed()" 
+            class="ml-10 mt-1 space-y-1 transition-all">
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Overview</a>
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Stats</a>
+        </div>
+      </div>
+
+      <!-- Orders -->
+      <div>
+        <button (click)="toggleSection('orders')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/orders-icon.png" alt="orders-icon" class="w-6 h-6" />
+            <span *ngIf="!sidebarCollapsed()">Orders</span>
+          </span>
+          <img *ngIf="!sidebarCollapsed()" 
+            src="/dashboard-icons/arrow-up.png"
+            class="w-4 h-4 transition-transform" 
+            [ngClass]="openSection === 'orders' ? 'rotate-0' : 'rotate-180'"/>
+        </button>
+        <div *ngIf="openSection === 'orders' && !sidebarCollapsed()" 
+            class="ml-10 mt-1 space-y-1 transition-all">
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Overview</a>
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Stats</a>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <button (click)="toggleSection('products')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/products-icon.png" alt="products-icon" class="w-6 h-6" />
+            <span *ngIf="!sidebarCollapsed()">Products</span>
+          </span>
+          <img *ngIf="!sidebarCollapsed()" 
+            src="/dashboard-icons/arrow-up.png" 
+            class="w-4 h-4 transition-transform" 
+            [ngClass]="openSection === 'products' ? 'rotate-0' : 'rotate-180'"/>
+        </button>
+        <div *ngIf="openSection === 'products' && !sidebarCollapsed()" 
+            class="ml-10 mt-1 space-y-1 transition-all">
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Overview</a>
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Stats</a>
+        </div>
+      </div>
+
+      <!-- Payments -->
+      <div>
+        <button (click)="toggleSection('payments')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/payments-icon.png" alt="payments-icon" class="w-6 h-6" />
+            <span *ngIf="!sidebarCollapsed()">Payments</span>
+          </span>
+          <img *ngIf="!sidebarCollapsed()" 
+            src="/dashboard-icons/arrow-up.png" 
+            class="w-4 h-4 transition-transform"
+            [ngClass]="openSection === 'payments' ? 'rotate-0' : 'rotate-180'"/>
+        </button>
+        <div *ngIf="openSection === 'payments' && !sidebarCollapsed()" 
+            class="ml-10 mt-1 space-y-1 transition-all">
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Overview</a>
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Stats</a>
+        </div>
+      </div>
+
+      <!-- Calendar -->
+      <div>
+        <button (click)="toggleSection('calendar')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/calendar-icon.png" alt="calendar-icon" class="w-6 h-6" />
+            <span *ngIf="!sidebarCollapsed()">Calendar</span>
+          </span>
+          <img *ngIf="!sidebarCollapsed()" 
+            src="/dashboard-icons/arrow-up.png" 
+            class="w-4 h-4 transition-transform"
+            [ngClass]="openSection === 'calendar' ? 'rotate-0' : 'rotate-180'"/>
+        </button>
+        <div *ngIf="openSection === 'calendar' && !sidebarCollapsed()" 
+            class="ml-10 mt-1 space-y-1 transition-all">
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Overview</a>
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Stats</a>
+        </div>
+      </div>
+
+      <!-- Profile (não tem submenu) -->
+      <div>
+        <a href="#profile"
+          class="w-full flex items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/profile-icon.png" alt="profile-icon" class="w-6 h-6" />
+            <span *ngIf="!sidebarCollapsed()">User Profile</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Support -->
+      <h3 class="text-gray-400 text-sm pt-5" *ngIf="!sidebarCollapsed()">SUPPORT</h3>
+
+      <div>
+        <button (click)="toggleSection('chat')"
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
+          <span class="flex items-center gap-4">
+            <img src="/dashboard-icons/chat-icon.png" alt="chat-icon" class="w-6 h-6" />
+            <span *ngIf="!sidebarCollapsed()">Chat</span>
+          </span>
+          <img *ngIf="!sidebarCollapsed()" 
+            src="/dashboard-icons/arrow-up.png"
+            class="w-4 h-4 transition-transform" 
+            [ngClass]="openSection === 'chat' ? 'rotate-0' : 'rotate-180'"/>
+        </button>
+        <div *ngIf="openSection === 'chat' && !sidebarCollapsed()" 
+            class="ml-10 mt-1 space-y-1 transition-all">
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Overview</a>
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Stats</a>
         </div>
       </div>
 
       <div>
-        <button (click)="toggleSection('orders')"
-          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
-          <span class="flex items-center gap-4">
-            <img src="/dashboard-icons/orders-icon.png" alt="orders-icon" class="w-6 h-6" />
-            Orders
-          </span>
-          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
-            'rotate-180': openSection !== 'orders',
-            'rotate-0': openSection === 'orders'
-          }" />
-        </button>
-        <div [ngClass]="{
-        'max-h-40': openSection === 'orders',
-        'max-h-0': openSection !== 'orders'
-      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
-        </div>
-      </div>
-      <div>
-        <button (click)="toggleSection('products')"
-          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
-          <span class="flex items-center gap-4">
-            <img src="/dashboard-icons/products-icon.png" alt="products-icon" class="w-6 h-6" />
-            Products
-          </span>
-          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
-            'rotate-180': openSection !== 'products',
-            'rotate-0': openSection === 'products'
-          }" />
-        </button>
-        <div [ngClass]="{
-        'max-h-40': openSection === 'products',
-        'max-h-0': openSection !== 'products'
-      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
-        </div>
-      </div>
-      <h3 class="text-gray-400 text-sm">SUPPORT</h3>
-            <div>
-        <button (click)="toggleSection('chat')"
-          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
-          <span class="flex items-center gap-4">
-            <img src="/dashboard-icons/chat-icon.png" alt="chat-icon" class="w-6 h-6" />
-            Chat
-          </span>
-          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
-            'rotate-180': openSection !== 'dashboard',
-            'rotate-0': openSection === 'dashboard'
-          }" />
-        </button>
-        <div [ngClass]="{
-        'max-h-40': openSection === 'chat',
-        'max-h-0': openSection !== 'chat'
-      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
-        </div>
-      </div>
-            <div>
         <button (click)="toggleSection('email')"
-          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100">
+          class="w-full flex justify-between items-center text-left py-2 px-4 rounded-xl hover:bg-blue-100 transition">
           <span class="flex items-center gap-4">
-            <img src="/dashboard-icons/email-icon.png" alt="dash-icon" class="w-6 h-6" />
-            Email Ticket
+            <img src="/dashboard-icons/email-icon.png" alt="email-icon" class="w-6 h-6" />
+            <span *ngIf="!sidebarCollapsed()">Email</span>
           </span>
-          <img src="/dashboard-icons/arrow-up.png" alt="arrow" class="w-4 h-4" [ngClass]="{
-            'rotate-180': openSection !== 'dashboard',
-            'rotate-0': openSection === 'dashboard'
-          }" />
+          <img *ngIf="!sidebarCollapsed()" 
+            src="/dashboard-icons/arrow-up.png"
+            class="w-4 h-4 transition-transform" 
+            [ngClass]="openSection === 'email' ? 'rotate-0' : 'rotate-180'"/>
         </button>
-        <div [ngClass]="{
-        'max-h-40': openSection === 'email',
-        'max-h-0': openSection !== 'email'
-      }" class="ml-4 mt-1 space-y-1 overflow-hidden transition-all duration-200 ease-in-out">
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Overview</a>
-          <a class="block px-4 py-1 hover:bg-blue-100 rounded" href="#">Stats</a>
+        <div *ngIf="openSection === 'email' && !sidebarCollapsed()" 
+            class="ml-10 mt-1 space-y-1 transition-all">
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Overview</a>
+          <a class="block px-2 py-1 hover:bg-blue-100 rounded">Stats</a>
         </div>
       </div>
+
+      <!-- Others --> 
+       <h3 class="text-gray-400 text-sm pt-5">STATUS</h3>
+        <div>    
+          <button 
+            [ngClass]="{'w-full flex justify-between items-center text-left py-2 px-4 rounded-xl': true, 'bg-green-100 border-green-200 hover:bg-green-300 border-green-400': status === 'Online', 'bg-red-100 border-red-200 hover:bg-red-300 border-red-400': status === 'Offline' }" > 
+            <span class="flex items-center gap-4"> 
+              <img [src]="status === 'Online' ? '/dashboard-icons/online-icon.png' : '/dashboard-icons/offline-icon.png'" alt="status-icon" class="w-6 h-6 transition-all" /> 
+              <span *ngIf="!sidebarCollapsed()">
+                {{ status }}
+              </span> 
+            </span> 
+          </button> 
+        </div>
+
     </div>
   </aside>
 
@@ -117,7 +187,7 @@
     <div class="grid grid-cols-3">
       <div class="h-20 col-span-full w-screen flex justify-between items-center">
         <div class="w-full">
-          <button class="border-1 rounded-md border-gray-200 m-3 py-2 px-4 hover:bg-blue-100">
+          <button (click)="toggleSidebar()" class="border-1 rounded-md border-gray-200 m-3 py-2 px-4 hover:bg-blue-100">
             <img src="/dashboard-icons/sidebar-hide-button.png" alt="" class="w-6 h-6">
           </button>
           Welcome, 
@@ -126,7 +196,7 @@
       <div class="bg-yellow-100 col-span-full grid grid-cols-12 gap-4">
         <div class="bg-blue-300 col-span-7">Numeros</div>
         <div class="bg-blue-300 col-span-5">Metricas</div>
-        <div class="bg-blue-300 col-span-12">Estatisicas</div>
+        <div class="bg-blue-300 col-span-12">Estatísticas</div>
         <div class="bg-blue-300 col-span-12">Ordens Recentes</div>
       </div>
     </div>

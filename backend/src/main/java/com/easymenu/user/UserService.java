@@ -15,6 +15,7 @@ public interface UserService {
     void activeUser(UUID id);
     UserResponseDTO getOneUser(UUID id);
     UserDetails findByName(String name);
+    UserModel findModelByUsername(String username);
     List<UserResponseDTO> getUsers();
     Page<UserResponseDTO> findByCriteria(UserSearchDTO userSearchDTO, Pageable pageable);
 

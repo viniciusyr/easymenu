@@ -178,6 +178,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserModel findModelByUsername(String username){
+        return userRepository.findByName(username).orElseThrow( () ->
+                new UsernameNotFoundException("User not found: " + username));
+    }
+
+    @Override
     public List<UserResponseDTO> getUsers() {
         return redisService.getList(USER_CACHE_KEY, UserResponseDTO.class)
                         .orElseGet(() -> {
